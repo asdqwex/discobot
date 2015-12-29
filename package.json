@@ -1,0 +1,28 @@
+{
+  "name": "discobot",
+  "version": "1.0.0",
+  "description": "bot 4 discord",
+  "main": "bot.js",
+  "scripts": {
+    "start": "node bot.js",
+    "test": "bot.js test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/asdqwex/discobot.git"
+  },
+  "keywords": [
+    "discord",
+    "bot"
+  ],
+  "author": "Matthew Ellsworth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/asdqwex/discobot/issues"
+  },
+  "homepage": "https://github.com/asdqwex/discobot#readme",
+  "dependencies": {
+    "discord.io": "^1.6.0",
+    "xmlhttprequest": "^1.8.0"
+  }
+}
