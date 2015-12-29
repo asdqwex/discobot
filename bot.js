@@ -1,8 +1,14 @@
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 var DiscordClient = require('discord.io');
+
+var fs = require('fs');
+var array = fs.readFileSync('.secrets').toString().split("\n");
+
+console.log(array);
+
 var bot = new DiscordClient({
-    email: "saermon@gmail.com",
-    password: "qweasd123",
+    email: array[0],
+    password: array[1],
     autorun: true
 });
 
