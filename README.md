@@ -1,6 +1,12 @@
 # discobot
 bot 4 discord
 
+# Manual steps
+Create a .secrets file with the following format
+
+    email@domain.com
+    password
+
 # to build
 docker build -t discobot .
 
