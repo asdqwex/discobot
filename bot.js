@@ -12,7 +12,7 @@ const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const BOT_NAME = process.env.BOT_NAME || 'bot'
 
 if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
-  process.stdout.write(`Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables\n`)
+  process.stdout.write('Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables\n')
   process.exit(1)
 }
 
