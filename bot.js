@@ -46,7 +46,7 @@ bot.on('ready', function () {
           message: tables
         })
       }
-      if (messages[0] !== '@' + BOT_NAME) return undefined
+      if (messages[0] !== '!' + BOT_NAME) return undefined
       if (messages.length < 2) {
         return bot.sendMessage({
           to: channelID,
