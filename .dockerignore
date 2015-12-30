@@ -1,2 +1,4 @@
 node_modules/
 .secrets
+tenc
+npm-debug.log
