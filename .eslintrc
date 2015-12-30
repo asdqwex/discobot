@@ -1,0 +1,7 @@
+{
+  "extends": "standard",
+  "ecmaFeatures": {
+    "modules": true
+  },
+  "rules": {}
+}
