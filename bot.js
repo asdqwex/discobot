@@ -1,3 +1,7 @@
+if (process.argv[2] === 'test') {
+        process.exit()
+}
+
 'use strict'
 
 const DiscordClient = require('discord.io')
