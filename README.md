@@ -1,4 +1,4 @@
-# discobot [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.svg?label=ready&title=Ready)](http://waffle.io/asdqwex/discobot)
+# discobot [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.svg?label=ready&title=Ready)](http://waffle.io/asdqwex/discobot) [![Circle CI](https://circleci.com/gh/asdqwex/discobot.svg?style=svg)](https://circleci.com/gh/asdqwex/discobot)
 Delete asdqwex/discobot
 Deleting a project will remove all of its data from waffle.io and unregister its webhooks to GitHub. Deleting a project will not affect any data in the GitHub repos that are connected to it.
 
