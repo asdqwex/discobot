@@ -23,8 +23,8 @@
   "homepage": "https://github.com/asdqwex/discobot#readme",
   "dependencies": {
     "discord.io": "^1.6.0",
-    "node-opus": "^0.1.11",
-    "xmlhttprequest": "^1.8.0"
+    "giphy-api": "^1.1.11",
+    "node-opus": "^0.1.11"
   },
   "devDependencies": {
     "eslint-config-standard": "^4.4.0",
