@@ -33,10 +33,16 @@ bot.on('ready', function () {
   bot.joinVoiceChannel(DISCORD_CHANNEL, function () {
     bot.on('message', function (user, userID, channelID, message, rawEvent) {
       const messages = message.split(' ')
-      if (message === '(╯°□°）╯︵ ┻━┻') {
+      if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
+        var count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
+        var tableArray = []
+        for (var i = 0; i < count; i++) { 
+          tableArray.push('┬─┬ ノ( ゜-゜ノ)')
+        }
+        var tables = tableArray.join(' ')
         return bot.sendMessage({
           to: channelID,
-          message: '┬─┬ ノ( ゜-゜ノ)'
+          message: tables
         })
       }
       if (messages[0] !== '@' + BOT_NAME) return undefined
