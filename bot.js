@@ -3,6 +3,7 @@
 const DiscordClient = require('discord.io')
 const fs = require('fs')
 const path = require('path')
+const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 const BOT_NAME = process.env.BOT_NAME || 'bot'
 
@@ -13,7 +14,7 @@ if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
 
 const DISCORD_CHANNEL = process.env.DISCORD_CHANNEL || '123201770355687424'
 
-const giphy = require('giphy-api')(process.env.GIPHY_KEY || 'dc6zaTOxFJmzC')
+// const giphy = require('giphy-api')(process.env.GIPHY_KEY || 'dc6zaTOxFJmzC')
 const clipList = fs.readdirSync('./Azire')
 
 const HELP_TEXT = [ 'Here are the things I can do for you master:',
@@ -59,27 +60,38 @@ bot.on('ready', function () {
           message: 'pong'
         })
       } else if (action === 'giphy') {
-        const GIPHY_QUERY = message.slice(6)
-        let giphy_functor = 'trending'
-        if (GIPHY_QUERY.length > 0) {
-          giphy_functor = 'search'
-        }
-        giphy[giphy_functor]({
-          q: GIPHY_QUERY,
-          limit: 1
-        }).then(function (results) {
-          if (results && results.data && results.data.length > 0) {
-            bot.sendMessage({
-              to: channelID,
-              message: results.data[0].url
-            })
-          } else {
-            bot.sendMessage({
-              to: channelID,
-              message: `I don't know what you searched but it was fucking retarded and therefore had zero results.`
-            })
-          }
-        })
+        var gipher = message.slice(11); 
+        var theUrl = "http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag="+gipher;
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open( "GET", theUrl, false );
+        xmlHttp.send( null );
+        var out = JSON.parse(xmlHttp.responseText);
+        bot.sendMessage({
+          to: channelID,
+          message: out.data.url
+        });
+
+//        const GIPHY_QUERY = message.slice(6)
+//        let giphy_functor = 'trending'
+//        if (GIPHY_QUERY.length > 0) {
+//          giphy_functor = 'search'
+//        }
+//        giphy[giphy_functor]({
+//          q: GIPHY_QUERY,
+//          limit: 1
+//        }).then(function (results) {
+//          if (results && results.data && results.data.length > 0) {
+//            bot.sendMessage({
+//              to: channelID,
+//              message: results.data[0].url
+//            })
+//          } else {
+//            bot.sendMessage({
+//              to: channelID,
+///              message: `I don't know what you searched but it was fucking retarded and therefore had zero results.`
+//            })
+//          }
+//        })
       } else if (action === 'azire') {
         if (messages.length <= 2) {
           const chosen = clipList[Math.floor(Math.random() * clipList.length)]
