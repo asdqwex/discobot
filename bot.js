@@ -104,7 +104,7 @@ bot.on('ready', function () {
             channel: DISCORD_CHANNEL,
             stereo: true
           }, function (stream) {
-            console.log(`playing audio file, "${chosen}"`)
+            console.log('playing audio file, "${chosen}"')
             stream.playAudioFile(item)
           })
         } else {
@@ -123,7 +123,7 @@ bot.on('ready', function () {
                 channel: DISCORD_CHANNEL,
                 stereo: true
               }, function (stream) {
-                console.log(`playing audio file, "${attempt}"`)
+                console.log('playing audio file, "${attempt}"')
                 stream.playAudioFile(attempt)
               })
             }
