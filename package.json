@@ -24,8 +24,6 @@
   "dependencies": {
     "discord.io": "^1.6.0",
     "node-opus": "^0.1.11",
-    "request": "^2.67.0",
-    "ws": "^0.8.1",
     "xmlhttprequest": "^1.8.0"
   },
   "devDependencies": {
