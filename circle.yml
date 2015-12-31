@@ -2,10 +2,14 @@ machine:
   services:
     - docker
 
+dependencies:
+  override:
+    - echo "skip deps"
+
 test:
   override:
     - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
-    - make pull
+    - make pull || true
     - make
 
 deployment:

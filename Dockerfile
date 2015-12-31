@@ -14,9 +14,12 @@ COPY package.json /app/
 WORKDIR /app
 
 # Install deps
-RUN npm install --production
+RUN npm install
 
 # Copy code after the fact, so that non-package.json changes do not invalidate cache
 COPY . /app/
+
+RUN npm test && \
+    npm prune --productio
 
 CMD ["node", "bot.js"]
