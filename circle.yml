@@ -2,10 +2,6 @@ machine:
   services:
     - docker
 
-dependencies:
-  override:
-    - pip install docker-scripts
-
 test:
   override:
     - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
@@ -16,5 +12,4 @@ deployment:
   master:
     branch: master
     commands:
-      - make squash
       - make push
