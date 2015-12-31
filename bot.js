@@ -29,19 +29,23 @@ const bot = new DiscordClient({
 
 const onMessage = function (user, userID, channelID, message, rawEvent) {
   const messages = message.split(' ')
+  //
+  // Table flipper!
+  //
   if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
-    var count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
-    var tableArray = []
-    for (var i = 0; i < count; i++) {
+    const count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
+    const tableArray = []
+    for (let i = 0; i < count; i++) {
       tableArray.push('┬─┬ ノ( ゜-゜ノ)')
     }
-    var tables = tableArray.join(' ')
     return bot.sendMessage({
       to: channelID,
-      message: tables
+      message: tableArray.join(' ')
     })
   }
+  // Anything after this point needs to be addressed to us (!bot action)
   if (messages[0] !== '!' + BOT_NAME) return undefined
+  // Help text for "!bot"
   if (messages.length < 2) {
     return bot.sendMessage({
       to: channelID,
@@ -49,25 +53,25 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
     })
   }
   const action = messages[1]
+  // Ping
   if (action === 'ping') {
     bot.sendMessage({
       to: channelID,
       message: 'pong'
     })
+  //
+  // Giphy
+  //
   } else if (action === 'giphy') {
-    const GIPHY_QUERY = message.slice(6)
-    let giphy_functor = 'trending'
-    if (GIPHY_QUERY.length > 0) {
-      giphy_functor = 'search'
-    }
-    giphy[giphy_functor]({
-      q: GIPHY_QUERY,
+    messages.shift(); messages.shift()
+    giphy.translate({
+      s: messages.join(' '),
       limit: 1
     }).then(function (results) {
-      if (results && results.data && results.data.length > 0) {
+      if (results && results.data) {
         bot.sendMessage({
           to: channelID,
-          message: results.data[0].url
+          message: results.data.url
         })
       } else {
         bot.sendMessage({
@@ -76,6 +80,9 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         })
       }
     })
+  //
+  // Azire Soundboard - all credit to the Falcon
+  //
   } else if (action === 'azire') {
     if (messages.length <= 2) {
       const chosen = clipList[Math.floor(Math.random() * clipList.length)]
