@@ -53,16 +53,16 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
     })
   }
   const action = messages[1]
-  // Ping
   if (action === 'ping') {
+    // Ping
     bot.sendMessage({
       to: channelID,
       message: 'pong'
     })
-  //
-  // Giphy
-  //
-  } else if (action === 'giphy') {
+  } else if (action === 'giphy' || action === 'gif') {
+    //
+    // Giphy
+    //
     messages.shift(); messages.shift()
     giphy.translate({
       s: messages.join(' '),
@@ -80,10 +80,10 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         })
       }
     })
-  //
-  // Azire Soundboard - all credit to the Falcon
-  //
   } else if (action === 'azire') {
+    //
+    // Azire Soundboard - all credit to the Falcon
+    //
     if (messages.length <= 2) {
       const chosen = clipList[Math.floor(Math.random() * clipList.length)]
       const item = './Azire/' + chosen

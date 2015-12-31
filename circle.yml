@@ -4,7 +4,7 @@ machine:
 
 dependencies:
   override:
-    - echo "skip deps"
+    - pip install docker-scripts
 
 test:
   override:
@@ -13,7 +13,8 @@ test:
     - make
 
 deployment:
-  docker:
-    branch: /.*/
+  master:
+    branch: master
     commands:
+      - make squash
       - make push

@@ -19,5 +19,7 @@ push:
 	${DOCKER_CMD} push ${ORG}/${REPO}:${TAG}
 clean:
 	${DOCKER_CMD} rmi ${ORG}/${REPO}:${TAG}
+squash:
+	docker-scripts squash ${ORG}/${REPO}:${TAG}
 
 .PHONY: build pull push clean
