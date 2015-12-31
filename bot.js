@@ -94,8 +94,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
           message: 'See https://github.com/asdqwex/discobot/tree/master/Azire'
         })
       } else {
-        messages.shift()
-        messages.shift()
+        messages.shift(); messages.shift()
         const query = messages.join('_').replace(' ', '_').replace('.mp3', '').replace('"', '')
         const attempt = './Azire/' + path.basename(query) + '.mp3'
         if (fs.existsSync(attempt)) {

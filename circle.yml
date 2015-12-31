@@ -1,0 +1,15 @@
+machine:
+  services:
+    - docker
+
+test:
+  override:
+    - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
+    - make pull
+    - make
+
+deployment:
+  docker:
+    branch: /.*/
+    commands:
+      - make push
