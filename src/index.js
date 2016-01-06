@@ -66,10 +66,21 @@ glob('_build/modules/*.js', function (err, files) {
       }
     }
 
-    bot.on('ready', function () {
-      console.log('connected')
+    bot.on('ready', function (data) {
+      bot.general_channel = data.d.guilds[0].channels.filter(function (chan) {
+        if (chan.name === 'general' && chan.type === 'text') return true
+      })[0].id
+      bot.presences = data.d.guilds[0].presences
       bot.joinVoiceChannel(DISCORD_CHANNEL, function () {
         bot.on('message', onMessage)
+        bot.on('presence', function (name, id, status, game) {
+          if (game) {
+            return bot.sendMessage({
+              to: bot.general_channel,
+              message: `${name} has begun playing ${game}!`
+            })
+          }
+        })
       })
     })
   }
