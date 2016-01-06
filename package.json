@@ -31,7 +31,9 @@
   "dependencies": {
     "discord.io": "^1.6.5",
     "giphy-api": "^1.1.11",
-    "node-opus": "^0.1.11"
+    "glob": "^6.0.3",
+    "node-opus": "^0.1.11",
+    "sifter": "^0.4.5"
   },
   "devDependencies": {
     "babel": "^6.3.26",

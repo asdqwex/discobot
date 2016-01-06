@@ -2,8 +2,6 @@
 
 // Modules
 const DiscordClient = require('discord.io')
-const fs = require('fs')
-const path = require('path')
 
 // Constants
 const BOT_NAME = process.env.BOT_NAME || 'bot'
@@ -19,122 +17,60 @@ if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
 }
 
 // Initialization
-const giphy = require('giphy-api')(process.env.GIPHY_KEY || 'dc6zaTOxFJmzC')
-const clipList = fs.readdirSync('./Azire')
 const bot = new DiscordClient({
   email: process.env.DISCORD_EMAIL,
   password: process.env.DISCORD_PASSWORD,
   autorun: true
 })
+bot.BOT_NAME = BOT_NAME
+bot.DISCORD_CHANNEL = DISCORD_CHANNEL
 
-// optimisticMatch returns true if str looks a lot like haystack.
-// str like "az", haystack like "Azire", limit being an optional argument which limits how short a match can be
-// for example, ('az', 'azire', 1) matches, because 'az' it matched at length of 2.
-// whereas ('a', 'azire', 2) does not match, because at least characters much match
-const optimisticMatch = function (str, haystack, limit) {
-  if (limit && limit.length > str.length) return false
-  if (typeof haystack === 'string') haystack = [ haystack ]
-  for (let i = 0; i < haystack.length; i++) {
-    return haystack[i].match(new RegExp('$' + str + '.*', 'gi'))
-  }
-}
-
-const onMessage = function (user, userID, channelID, message, rawEvent) {
-  const messages = message.split(' ')
-  //
-  // Table flipper!
-  //
-  if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
-    const count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
-    const tableArray = []
-    for (let i = 0; i < count; i++) {
-      tableArray.push('┬─┬ ノ( ゜-゜ノ)')
+const glob = require('glob')
+const modules = []
+glob('_build/modules/*.js', function (err, files) {
+  if (err) throw new Error(err)
+  else {
+    for (let i = 0; i < files.length; i++) {
+      const module = require('./' + files[i].replace('_build/', ''))
+      if (!module.names) {
+        console.log(`Warning! ${files[i]} ignored as it has no .names propery`)
+        continue
+      }
+      modules.push(module)
     }
-    return bot.sendMessage({
-      to: channelID,
-      message: tableArray.join(' ')
-    })
-  }
-  // Anything after this point needs to be addressed to us (!bot action)
-  if (messages[0] !== '!' + BOT_NAME) return undefined
-  // Help text for "!bot"
-  if (messages.length < 2) {
-    return bot.sendMessage({
-      to: channelID,
-      message: HELP_TEXT
-    })
-  }
-  const action = messages[1]
-  if (optimisticMatch(action, 'ping')) {
-    // Ping
-    bot.sendMessage({
-      to: channelID,
-      message: 'pong'
-    })
-  } else if (optimisticMatch(action, 'giphy') || optimisticMatch(action, 'gif')) {
-    //
-    // Giphy
-    //
-    messages.shift(); messages.shift()
-    let giphy_type = 'translate'
-    if (messages.length === 0) giphy_type = 'random'
-    giphy[giphy_type]({
-      s: messages.join(' '),
-      limit: 1
-    }).then(function (results) {
-      if (results && results.data) {
-        bot.sendMessage({
+
+    const Sifter = require('sifter')
+    const sifter = new Sifter(modules)
+    const hailing_frequency = '!' + BOT_NAME
+
+    const onMessage = function (user, userID, channelID, message, rawEvent) {
+      // Anything after this point needs to be addressed to us (!bot action)
+      if (message.substr(0, hailing_frequency.length) !== hailing_frequency) return undefined
+      // Help text for "!bot"
+      if (message === hailing_frequency || message === hailing_frequency + '--help') {
+        return bot.sendMessage({
           to: channelID,
-          message: results.data.url
-        })
-      } else {
-        bot.sendMessage({
-          to: channelID,
-          message: `I don't know what you searched but it was fucking retarded and therefore had zero results.`
+          message: HELP_TEXT
         })
       }
-    })
-  } else if (optimisticMatch(action, 'azire')) {
-    //
-    // Azire Soundboard - all credit to the Falcon
-    //
-    if (messages.length <= 2) {
-      const chosen = clipList[Math.floor(Math.random() * clipList.length)]
-      const item = './Azire/' + chosen
-      bot.getAudioContext({
-        channel: DISCORD_CHANNEL,
-        stereo: true
-      }, function (stream) {
-        console.log(`playing audio file, "${chosen}"`)
-        stream.playAudioFile(item)
+      const trimmed = message.replace(hailing_frequency + ' ', '').trimLeft()
+      const results = sifter.search(trimmed.split(' ')[0], {
+        fields: [ 'names' ],
+        sort: [{ field: 'score', direction: 'asc' }],
+        limit: 1
       })
-    } else {
-      if (messages[2] === '--list') {
-        bot.sendMessage({
-          to: channelID,
-          message: 'See https://github.com/asdqwex/discobot/tree/master/Azire'
-        })
-      } else {
-        messages.shift(); messages.shift()
-        const query = messages.join('_').replace(' ', '_').replace('.mp3', '').replace('"', '')
-        const attempt = './Azire/' + path.basename(query) + '.mp3'
-        if (fs.existsSync(attempt)) {
-          bot.getAudioContext({
-            channel: DISCORD_CHANNEL,
-            stereo: true
-          }, function (stream) {
-            console.log(`playing audio file, "${attempt}"`)
-            stream.playAudioFile(attempt)
-          })
-        }
+      if (results.total > 0) {
+        const module = modules[results.items[0].id]
+        console.log(`${user} called ${module.names} with "${trimmed}" by a score of ${results.items[0].score}`)
+        modules[results.items[0].id](bot, user, userID, channelID, trimmed, rawEvent)
       }
     }
-  }
-}
 
-bot.on('ready', function () {
-  console.log('connected')
-  bot.joinVoiceChannel(DISCORD_CHANNEL, function () {
-    bot.on('message', onMessage)
-  })
+    bot.on('ready', function () {
+      console.log('connected')
+      bot.joinVoiceChannel(DISCORD_CHANNEL, function () {
+        bot.on('message', onMessage)
+      })
+    })
+  }
 })

@@ -8,14 +8,14 @@ import babel from 'gulp-babel'
 import server from 'gulp-develop-server'
 
 const DEST = '_build'
-const SRC = ['src/*.js']
+const SRC = 'src'
 
 gulp.task('clean', function () {
-  return del([DEST + '/**/*'])
+  del(DEST)
 })
 
-gulp.task('default', ['clean'], function () {
-  return gulp.src(SRC)
+gulp.task('main', function () {
+  return gulp.src(`${SRC}/*.js`)
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(sourcemaps.init())
@@ -24,7 +24,20 @@ gulp.task('default', ['clean'], function () {
 		.pipe(gulp.dest(DEST))
 })
 
+gulp.task('modules', function () {
+  return gulp.src(`${SRC}/modules/*.js`)
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(sourcemaps.init())
+		.pipe(babel({ presets: [ 'es2015' ] }))
+    .pipe(sourcemaps.write('.'))
+		.pipe(gulp.dest(`${DEST}/modules`))
+})
+
 gulp.task('watch', ['default'], function () {
   server.listen({ path: DEST })
-  gulp.watch(SRC, ['default', server.restart])
+  gulp.watch(`${SRC}/*.js`, ['main', server.restart])
+  gulp.watch(`${SRC}/modules/*.js`, ['modules', server.restart])
 })
+
+gulp.task('default', ['clean', 'main', 'modules'])
