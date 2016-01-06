@@ -1,9 +1,17 @@
+
 machine:
   services:
     - docker
+  node:
+    version: 5.3.0
+
+dependencies:
+  override:
+    - npm install
 
 test:
   override:
+    - npm run test
     - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
     - make pull || true
     - make

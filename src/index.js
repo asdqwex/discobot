@@ -27,6 +27,18 @@ const bot = new DiscordClient({
   autorun: true
 })
 
+// optimisticMatch returns true if str looks a lot like haystack.
+// str like "az", haystack like "Azire", limit being an optional argument which limits how short a match can be
+// for example, ('az', 'azire', 1) matches, because 'az' it matched at length of 2.
+// whereas ('a', 'azire', 2) does not match, because at least characters much match
+const optimisticMatch = function (str, haystack, limit) {
+  if (limit && limit.length > str.length) return false
+  if (typeof haystack === 'string') haystack = [ haystack ]
+  for (let i = 0; i < haystack.length; i++) {
+    return haystack[i].match(new RegExp('$' + str + '.*', 'gi'))
+  }
+}
+
 const onMessage = function (user, userID, channelID, message, rawEvent) {
   const messages = message.split(' ')
   //
@@ -53,18 +65,20 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
     })
   }
   const action = messages[1]
-  if (action === 'ping') {
+  if (optimisticMatch(action, 'ping')) {
     // Ping
     bot.sendMessage({
       to: channelID,
       message: 'pong'
     })
-  } else if (action === 'giphy' || action === 'gif') {
+  } else if (optimisticMatch(action, 'giphy') || optimisticMatch(action, 'gif')) {
     //
     // Giphy
     //
     messages.shift(); messages.shift()
-    giphy.translate({
+    let giphy_type = 'translate'
+    if (messages.length === 0) giphy_type = 'random'
+    giphy[giphy_type]({
       s: messages.join(' '),
       limit: 1
     }).then(function (results) {
@@ -80,7 +94,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         })
       }
     })
-  } else if (action === 'azire') {
+  } else if (optimisticMatch(action, 'azire')) {
     //
     // Azire Soundboard - all credit to the Falcon
     //
