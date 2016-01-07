@@ -1,0 +1,8 @@
+node_modules/
+.secrets
+tenc
+npm-debug.log
+.DS_Store
+*.plain
+*.tmp
+*.swp
