@@ -1,7 +1,10 @@
 # SETTINGS:
 
+ifeq (${CIRCLE_BRANCH},master)
+	CIRCLE_BRANCH := latest
+endif
 ifeq (${CIRCLE_BRANCH},)
-	CIRCLE_BRANCH := master
+	CIRCLE_BRANCH := dev
 endif
 TAG=${CIRCLE_BRANCH}
 REPO=discobot
