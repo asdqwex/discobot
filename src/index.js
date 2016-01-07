@@ -31,12 +31,16 @@ glob('_build/modules/*.js', function (err, files) {
   if (err) throw new Error(err)
   else {
     for (let i = 0; i < files.length; i++) {
-      const module = require('./' + files[i].replace('_build/', ''))
-      if (!module.names) {
-        console.log(`Warning! ${files[i]} ignored as it has no .names propery`)
-        continue
+      try {
+        const module = require('./' + files[i].replace('_build/', ''))
+        if (!module.names) {
+          console.log(`Warning! ${files[i]} ignored as it has no .names propery`)
+          continue
+        }
+        modules.push(module)
+      } catch (e) {
+        console.log(`Failed to load ${module}:`, e.message)
       }
-      modules.push(module)
     }
 
     const Sifter = require('sifter')
@@ -62,21 +66,22 @@ glob('_build/modules/*.js', function (err, files) {
       if (results.total > 0) {
         const module = modules[results.items[0].id]
         console.log(`${user} called ${module.names} with "${trimmed}" by a score of ${results.items[0].score}`)
-        modules[results.items[0].id](bot, user, userID, channelID, trimmed, rawEvent)
+        modules[results.items[0].id].onMessage(bot, user, userID, channelID, trimmed, rawEvent)
       }
     }
 
     bot.on('ready', function (data) {
       bot.general_channel = data.d.guilds[0].channels.filter(function (chan) {
         if (chan.name === 'general' && chan.type === 'text') return true
-      })[0].id
+      })[0]
+      console.log(`Connected as "${bot.BOT_NAME}" to channel "${bot.general_channel.name}"`)
       bot.presences = data.d.guilds[0].presences
       bot.joinVoiceChannel(DISCORD_CHANNEL, function () {
         bot.on('message', onMessage)
         bot.on('presence', function (name, id, status, game) {
           if (game) {
             return bot.sendMessage({
-              to: bot.general_channel,
+              to: bot.general_channel.id,
               message: `${name} has begun playing ${game}!`
             })
           }
