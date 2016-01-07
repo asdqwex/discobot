@@ -13,7 +13,6 @@ module.exports = {
     //
     // Azire Soundboard - all credit to the Falcon
     //
-    if (!bot.voiceReady) return false
     const messages = message.split(' ')
     messages.shift()
     if (messages.length === 0) { // Random
@@ -41,7 +40,7 @@ module.exports = {
         if (results.total > 0) {
           console.log(`${clipList[results.items[0].id]} won with a score of ${results.items[0].score}`)
           bot.getAudioContext({
-            channel: bot.DISCORD_CHANNEL,
+            channel: bot.my_voice_channel.id,
             stereo: true
           }, function (stream) {
             stream.playAudioFile('./Azire/' + clipList[results.items[0].id])

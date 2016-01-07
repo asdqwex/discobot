@@ -32,6 +32,7 @@ const modules = []
 let sifter
 // The bots name plus the identifier
 let hailing_frequency = (process.env.HAILING || '!') + bot.BOT_NAME
+if (process.env.NO_HAILING) hailing_frequency = bot.BOT_NAME
 
 const initialize = function () {
   glob('_build/modules/*.js', function (err, files) {
@@ -89,9 +90,7 @@ const onReady = function () {
       })
     }
   })
-  bot.joinVoiceChannel(bot.my_voice_channel.id, function () {
-    bot.voiceReady = true
-  })
+  bot.joinVoiceChannel(bot.my_voice_channel.id)
 }
 
 const onMessage = function (user, userID, channelID, message, rawEvent) {
