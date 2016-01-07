@@ -3,7 +3,7 @@ machine:
   services:
     - docker
   node:
-    version: 5.3.0
+    version: 5.4.0
 
 dependencies:
   override:
@@ -11,6 +11,7 @@ dependencies:
 
 test:
   override:
+    - ./node_modules/.bin/gulp
     - npm run test
     - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
     - make pull || true
@@ -21,3 +22,5 @@ deployment:
     branch: master
     commands:
       - make push
+      - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\nfoo@foo.com" | npm login
+      - npm publish
