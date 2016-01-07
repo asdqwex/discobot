@@ -13,6 +13,7 @@ module.exports = {
     //
     // Azire Soundboard - all credit to the Falcon
     //
+    if (!bot.voiceReady) return false
     const messages = message.split(' ')
     messages.shift()
     if (messages.length === 0) { // Random
