@@ -23,4 +23,4 @@ deployment:
     commands:
       - make push
       - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\nfoo@foo.com" | npm login
-      - npm publish
+      - npm publish || true

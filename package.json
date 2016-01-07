@@ -1,9 +1,10 @@
 {
   "name": "discobot",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "bot 4 discord",
   "main": "_build/index.js",
   "scripts": {
+    "dev": "./node_modules/.bin/gulp watch",
     "start": "node _build",
     "test": "true"
   },
