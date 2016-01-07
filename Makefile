@@ -20,4 +20,9 @@ push:
 clean:
 	${DOCKER_CMD} rmi ${ORG}/${REPO}:${TAG}
 
-.PHONY: build pull push clean
+npm:
+	./node_modules/.bin/gulp clean
+	./node_modules/.bin/gulp
+	npm publish
+
+.PHONY: build pull push clean npm

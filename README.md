@@ -1,5 +1,6 @@
-# discobot [![npm version](https://badge.fury.io/js/discobot.svg)](https://badge.fury.io/js/discobot) [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.svg?label=ready&title=Ready)](http://waffle.io/asdqwex/discobot) [![Circle CI](https://circleci.com/gh/asdqwex/discobot.svg?style=svg)](https://circleci.com/gh/asdqwex/discobot) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/) [![Docker Repository on Quay](https://quay.io/repository/erulabs/discobot/status "Docker Repository on Quay")](https://quay.io/repository/erulabs/discobot)
+# discobot [![npm version](https://badge.fury.io/js/discobot.svg)](https://badge.fury.io/js/discobot) [![Docker Repository on Quay](https://quay.io/repository/erulabs/discobot/status "Docker Repository on Quay")](https://quay.io/repository/erulabs/discobot) [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.svg?label=ready&title=Ready)](http://waffle.io/asdqwex/discobot) [![Circle CI](https://circleci.com/gh/asdqwex/discobot.svg?style=svg)](https://circleci.com/gh/asdqwex/discobot)
 
+[![js-standard-style](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard)
 [![NPM](https://nodei.co/npm/discobot.png)](https://nodei.co/npm/discobot/)
 
 # Usage:
