@@ -6,6 +6,8 @@ import sourcemaps from 'gulp-sourcemaps'
 import eslint from 'gulp-eslint'
 import babel from 'gulp-babel'
 import server from 'gulp-develop-server'
+import prepend from 'prepend-file'
+import fs from 'fs'
 
 const DEST = '_build'
 const SRC = 'src'
@@ -38,6 +40,11 @@ gulp.task('watch', ['default'], function () {
   server.listen({ path: DEST })
   gulp.watch(`${SRC}/*.js`, ['main', server.restart])
   gulp.watch(`${SRC}/modules/*.js`, ['modules', server.restart])
+})
+
+gulp.task('finalize', ['default'], function () {
+  prepend('./_build/index.js', "#!/usr/bin/env node\n")
+  fs.chmodSync('./_build/index.js', '0770')
 })
 
 gulp.task('default', ['clean', 'main', 'modules'])
