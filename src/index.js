@@ -94,6 +94,20 @@ const onReady = function () {
 }
 
 const onMessage = function (user, userID, channelID, message, rawEvent) {
+// To get it working, Needs to be solved
+
+  if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
+    const count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
+    const tableArray = []
+    for (let i = 0; i < count; i++) {
+      tableArray.push('┬─┬ ノ( ゜-゜ノ)')
+    }
+    return bot.sendMessage({
+      to: channelID,
+      message: tableArray.join(' ')
+    })
+  }
+
   // Anything after this point needs to be addressed to us (!bot action)
   if (message.substr(0, hailing_frequency.length) !== hailing_frequency) return undefined
   // Help text for "!bot"
