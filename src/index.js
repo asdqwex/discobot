@@ -118,7 +118,9 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'Here are the things I can do for you master:',
         'ping - say pong',
         'giphy <term> - post a damn giph',
-        'azire - play random cody clip'
+        'azire - play random cody clip',
+        '(╯°□°）╯︵ ┻━┻ - will flip all table back upright',
+        'yomama - tell a yo mama joke'
       ].join('\n')
     })
   }
