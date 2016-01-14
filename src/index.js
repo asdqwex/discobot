@@ -4,6 +4,7 @@
 const DiscordClient = require('discord.io')
 const glob = require('glob')
 const Sifter = require('sifter')
+const schedule = require('node-schedule')
 
 // All configuration is done via Environment Variables
 if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
@@ -27,7 +28,7 @@ bot.DISCORD_TEXT_CHANNEL = process.env.DISCORD_TEXT_CHANNEL || 'general'
 bot.DISCORD_VOICE_CHANNEL = process.env.DISCORD_VOICE_CHANNEL || 'General'
 
 // We will load all the code from the "modules" directory, and put the object each file exports into this array:
-const modules = []
+const modules = {}
 // Used to sort thru modules
 let sifter
 // The bots name plus the identifier
@@ -45,7 +46,7 @@ const initialize = function () {
           console.log(`Warning! ${files[i]} ignored as it has no .names propery`)
           continue
         }
-        modules.push(module)
+        modules[module.names[0]] = module
       } catch (e) {
         console.log(`Failed to load ${module}:`, e.message)
       }
@@ -81,6 +82,13 @@ const setupBot = function () {
 }
 
 const onReady = function () {
+// Cron Jobby bit
+
+  schedule.scheduleJob('0 0 0 * *', function () {
+    modules['xkcd'].plainCall(bot, '131193711743729664')
+  })
+
+// Other actions
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
     if (game) {
