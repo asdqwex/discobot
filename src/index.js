@@ -84,7 +84,7 @@ const setupBot = function () {
 const onReady = function () {
 // Cron Jobby bit
 
-  schedule.scheduleJob('*/1 * * * *', function () {
+  schedule.scheduleJob('0 0 0 * *', function () {
     modules['xkcd'].onMessage(bot, false, false, '131193711743729664', false, false)
   })
 
