@@ -7,6 +7,7 @@ import eslint from 'gulp-eslint'
 import babel from 'gulp-babel'
 import server from 'gulp-develop-server'
 import prepend from 'prepend-file'
+import mocha from 'gulp-mocha'
 import fs from 'fs'
 
 const DEST = '_build'
@@ -18,8 +19,7 @@ gulp.task('clean', function () {
 
 gulp.task('main', function () {
   return gulp.src(`${SRC}/*.js`)
-    .pipe(eslint())
-    .pipe(eslint.format())
+    .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
 		.pipe(babel({ presets: [ 'es2015' ] }))
     .pipe(sourcemaps.write('.'))
@@ -28,8 +28,7 @@ gulp.task('main', function () {
 
 gulp.task('modules', function () {
   return gulp.src(`${SRC}/modules/*.js`)
-    .pipe(eslint())
-    .pipe(eslint.format())
+    .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
 		.pipe(babel({ presets: [ 'es2015' ] }))
     .pipe(sourcemaps.write('.'))
@@ -43,8 +42,13 @@ gulp.task('watch', ['default'], function () {
 })
 
 gulp.task('finalize', ['default'], function () {
-  prepend('./_build/index.js', "#!/usr/bin/env node\n")
+  prepend('./_build/index.js', '#!/usr/bin/env node\n')
   fs.chmodSync('./_build/index.js', '0770')
 })
 
-gulp.task('default', ['clean', 'main', 'modules'])
+gulp.task('test', function () {
+  return gulp.src(`test/*.js`, { read: false })
+    .pipe(mocha({ reporter: 'spec' }))
+})
+
+gulp.task('default', ['clean', 'main', 'modules', 'test'])
