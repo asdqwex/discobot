@@ -129,7 +129,8 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'azire - play random cody clip',
         '(╯°□°）╯︵ ┻━┻ - will flip all table back upright',
         'yomama - tell a yo mama joke',
-        'xkcd - get todays xkcd comic'
+        'xkcd - get todays xkcd comic',
+        'cron - list enable or disable cronjobs (wip)'
       ].join('\n')
     })
   }
