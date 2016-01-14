@@ -1,6 +1,6 @@
 {
   "name": "discobot",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "bot 4 discord",
   "main": "_build/index.js",
   "scripts": {

@@ -111,7 +111,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
   // Anything after this point needs to be addressed to us (!bot action)
   if (message.substr(0, hailing_frequency.length) !== hailing_frequency) return undefined
   // Help text for "!bot"
-  if (message === hailing_frequency || message === hailing_frequency + '--help') {
+  if (message === hailing_frequency || message === hailing_frequency + '--help' || message === hailing_frequency + 'help' || message === hailing_frequency + 'commands') {
     return bot.sendMessage({
       to: channelID,
       message: [
