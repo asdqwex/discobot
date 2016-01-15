@@ -87,7 +87,11 @@ const onReady = function () {
   schedule.scheduleJob('0 0 0 * *', function () {
     modules['xkcd'].onMessage(bot, false, false, '131193711743729664', false, false)
   })
-
+// Bot tells us who it is in the test channel
+  bot.sendMessage({
+    to: '131193711743729664',
+    message: 'Hello My Name is ' + hailing_frequency
+  })
 // Other actions
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
@@ -124,14 +128,15 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
       to: channelID,
       message: [
         'Here are the things I can do for you master:',
-        'ping - say pong',
-        'giphy <term> - post a damn giph',
-        'azire - play random cody clip',
-        '(╯°□°）╯︵ ┻━┻ - will flip all table back upright',
-        'yomama - tell a yo mama joke',
-        'xkcd - get todays xkcd comic',
-        'cron - list enable or disable cronjobs (wip)',
-        'fortune - get a random fortune message'
+        ' ',
+        'ping            - say pong',
+        'giphy <term>    - post a damn giph',
+        'azire           - play random cody clip',
+        '(╯°□°）╯︵ ┻━┻   - will flip all table back upright',
+        'yomama          - tell a yo mama joke',
+        'xkcd            - get todays xkcd comic',
+        'cron            - list enable or disable cronjobs (wip)',
+        'fortune         - get a random fortune message'
       ].join('\n')
     })
   }
