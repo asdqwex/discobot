@@ -136,7 +136,8 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'yomama          - tell a yo mama joke',
         'xkcd            - get todays xkcd comic',
         'cron            - list enable or disable cronjobs (wip)',
-        'fortune         - get a random fortune message'
+        'fortune         - get a random fortune message',
+        'game            - set bots game title'
       ].join('\n')
     })
   }
