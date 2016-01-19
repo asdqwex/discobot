@@ -14,7 +14,6 @@ module.exports = {
         '(╯°□°）╯︵ ┻━┻	 - will flip all table back upright',
         'yomama				   - tell a yo mama joke',
         'xkcd				     - get todays xkcd comic',
-        'cronjobs			   - list enable or disable cronjobs (wip)',
         'fortune			   - get a random fortune message',
         'game            - set bots game title',
         '\n'
