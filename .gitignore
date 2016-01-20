@@ -7,3 +7,4 @@ _build
 *.plain
 *.tmp
 *.swp
+_quotes_db.json
