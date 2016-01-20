@@ -10,8 +10,10 @@ Discobot is a chat bot for [Discord](discordapp.com) built with JavaScript using
  - Install: `npm install -g discobot`
  - Use: `DISCORD_EMAIL=foo DISCORD_PASSWORD=bar discobot`
 
-We also publish a docker image for each new version so if you prefer to run Discobot as a container please see: [Discobot in Dovker](DOCKER.md)
+We also publish a docker image for each new version so if you prefer to run Discobot as a container.
+### [Discobot in Docker](DOCKER.md)
 
+# Configuration
 Discobot's configuration is environment variable only. The available options are:
 
 |environment variable|default|required|
@@ -30,13 +32,13 @@ Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` ca
 ### In discord:
 Use `HAILING` + `BOT_NAME` to talk to your bot, so `!bot` by default.
 
-You can find a list of all supported bot commands here: [Bot Commands](BOT_COMMANDS.md)
+[Bot Commands](BOT_COMMANDS.md)
 
 ### Contributing
 
 This is a truly open project! Pull requests will be merged and we will happily give out contributor access to those who contribute!
 
-Please see our Git Workflow Doc here: [Discobot Git Workflow](WORKFLOW.md)
+[Discobot Git Workflow](WORKFLOW.md)
 
 
 
