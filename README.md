@@ -10,22 +10,9 @@ Use `HAILING` + `BOT_NAME` + `COMMAD` to talk to your bot
 
 Example: `!bot help`
 
-[Bot Commands](BOT_COMMANDS.md)
+# [Bot Commands](BOT_COMMANDS.md)
 
-# Configuration
-
-|environment variable|default|required|
-|---|---|---|
-|`DISCORD_EMAIL`| - | yes |
-|`DISCORD_PASSWORD`| - | yes |
-|`DISCORD_GUILD`| Will connect to first guild in accounts roster | - |
-|`DISCORD_VOICE_CHANNEL`| Will connect to the General voice channel | - |
-|`DISCORD_TEXT_CHANNEL`| Will connect to the general voice chat | - |
-|`BOT_NAME`| bot | - |
-|`HAILING`| ! | - |
-|`NO_HAILING`| false | - |
-
-Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
+# [Configuration](CONFIGURATION.md)
 
 # [Discobot in Docker](DOCKER.md)
 
