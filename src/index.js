@@ -5,6 +5,12 @@ const DiscordClient = require('discord.io')
 const glob = require('glob')
 const Sifter = require('sifter')
 const schedule = require('node-schedule')
+import Random from 'randomjs'
+const random = new Random(Random.engines.mt19937().autoSeed())
+
+const dependencies = {
+  random
+}
 
 // All configuration is done via Environment Variables
 if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
@@ -136,7 +142,8 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'yomama          - tell a yo mama joke',
         'xkcd            - get todays xkcd comic',
         'fortune         - get a random fortune message',
-        'game            - set bots game title'
+        'game            - set bots game title',
+        'roll            - roll some dice'
       ].join('\n')
     })
   }
@@ -149,7 +156,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
   if (results.total > 0) {
     const module = modules[results.items[0].id]
     console.log(`${user} called ${module.names} with "${trimmed}" by a score of ${results.items[0].score}`)
-    if (module.onMessage) module.onMessage(bot, user, userID, channelID, trimmed, rawEvent)
+    if (module.onMessage) module.onMessage(bot, user, userID, channelID, trimmed, rawEvent, dependencies)
   }
 }
 

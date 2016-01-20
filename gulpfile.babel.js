@@ -12,13 +12,16 @@ import fs from 'fs'
 
 const DEST = '_build'
 const SRC = 'src'
+const TEST_GLOB = `test/**/*.js`
+const MODULES_GLOB = `${SRC}/modules/**/*.js`
+const MAIN_GLOB = `${SRC}/*.js`
 
 gulp.task('clean', function () {
   del(DEST)
 })
 
 gulp.task('main', function () {
-  return gulp.src(`${SRC}/*.js`)
+  return gulp.src(MAIN_GLOB)
     .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
 		.pipe(babel({ presets: [ 'es2015' ] }))
@@ -27,18 +30,18 @@ gulp.task('main', function () {
 })
 
 gulp.task('modules', function () {
-  return gulp.src(`${SRC}/modules/*.js`)
+  return gulp.src(MODULES_GLOB)
     .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
 		.pipe(babel({ presets: [ 'es2015' ] }))
     .pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(`${DEST}/modules`))
+		.pipe(gulp.dest(`${DEST}/modules/`))
 })
 
 gulp.task('watch', ['default'], function () {
   server.listen({ path: DEST })
-  gulp.watch(`${SRC}/*.js`, ['main', server.restart])
-  gulp.watch(`${SRC}/modules/*.js`, ['modules', server.restart])
+  gulp.watch(MAIN_GLOB, ['main', server.restart])
+  gulp.watch(MODULES_GLOB, ['modules', server.restart])
 })
 
 gulp.task('finalize', ['default'], function () {
@@ -47,8 +50,13 @@ gulp.task('finalize', ['default'], function () {
 })
 
 gulp.task('test', function () {
-  return gulp.src(`test/*.js`, { read: false })
+  return gulp.src(TEST_GLOB, { read: false })
     .pipe(mocha({ reporter: 'spec' }))
+})
+
+gulp.task('test-watch', ['default'], function () {
+  gulp.watch(TEST_GLOB, ['test'])
+  gulp.watch(MODULES_GLOB, ['modules', 'test'])
 })
 
 gulp.task('default', ['clean', 'main', 'modules', 'test'])
