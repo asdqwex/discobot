@@ -5,7 +5,7 @@ const DiscordClient = require('discord.io')
 const glob = require('glob')
 const Sifter = require('sifter')
 const schedule = require('node-schedule')
-import Random from 'randomjs'
+import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
 
 const dependencies = {
