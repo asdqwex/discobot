@@ -4,13 +4,13 @@
 
 [![npm downloads](https://img.shields.io/npm/dm/discobot.svg?style=flat-square)](https://www.npmjs.com/package/discobot) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/asdqwex/discobot)
 
-Discobot is a bot for [Discord](discordapp.com) built with JavaScript!
-
-This is a truly open project! Pull requests will be merged and we will happily give out contributor access to those who contribute!
+Discobot is a chat bot for [Discord](discordapp.com) built with JavaScript using [Discord.io](https://github.com/izy521/discord.io)!
 
 # Usage:
  - Install: `npm install -g discobot`
  - Use: `DISCORD_EMAIL=foo DISCORD_PASSWORD=bar discobot`
+
+We also publish a docker image for each new version so if you prefer to run Discobot as a container please see: [Discobot in Dovker](DOCKER.md)
 
 Discobot's configuration is environment variable only. The available options are:
 
@@ -27,25 +27,19 @@ Discobot's configuration is environment variable only. The available options are
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 
-If you've cloned the project, you can follow the development instructions below:
-
 ### In discord:
 Use `HAILING` + `BOT_NAME` to talk to your bot, so `!bot` by default.
 
-# Development:
-Run `npm install` to get setup, then:
+You can find a list of all supported bot commands here: [Bot Commands](BOT_COMMANDS.md)
 
-`BOT_NAME=my_bot DISCORD_EMAIL=some_email DISCORD_PASSWORD=some_pass npm run dev`
+### Contributing
 
-You can now edit the code and the bot will automatically restart and reconnect on file-save. You can also use `npm start` instead of `npm run dev` if you'd just like to test your current build.
+This is a truly open project! Pull requests will be merged and we will happily give out contributor access to those who contribute!
 
-To play audio locally, you'll need to install ffmpeg:
-#### OSX:
-`brew install ffmpeg`
-#### Windows:
-Install FFMPEG from http://ffmpeg.zeranoe.com/builds/ (the very first column - x32 and x64)
-#### Linux
-Typically the package is called `ffmpeg` - `libav-tools` will also work.
+Please see our Git Workflow Doc here: [Discobot Git Workflow](WORKFLOW.md)
 
-# Docker:
-`docker run -e "DISCORD_EMAIL=discord@email.com" -e "DISCORD_PASSWORD=some_password" -it erulabs/discobot`
+
+
+
+
+
