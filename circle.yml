@@ -20,6 +20,6 @@ deployment:
   master:
     branch: master
     commands:
-      - make push
+#      - make push
       - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\nfoo@foo.com" | npm login
       - npm publish || true
