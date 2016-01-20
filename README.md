@@ -22,8 +22,6 @@ This is a truly open project!
 
 Pull requests will be merged and we will happily give out contributor access to those who contribute!
 
-[Discobot Git Workflow](WORKFLOW.md)
-
 
 
 
