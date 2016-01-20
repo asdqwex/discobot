@@ -2,7 +2,6 @@
 
 import capitalize from './utils/capitalize'
 
-
 export default {
   names: ['roll', 'dice'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent, {random}) {
