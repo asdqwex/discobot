@@ -14,9 +14,9 @@ Example: `!bot help`
 
 # [Configuration](CONFIGURATION.md)
 
-# [Discobot in Docker](DOCKER.md)
+# [Docker](DOCKER.md)
 
-# Contributing
+# [Development](DEV.md)
 
 This is a truly open project! 
 
