@@ -6,8 +6,8 @@ A chat bot for [Discord](discordapp.com) built with JavaScript using [Discord.io
  - Install: `npm install -g discobot`
  - Use: `DISCORD_EMAIL=foo DISCORD_PASSWORD=bar discobot`
 
-### In discord:
 Use `HAILING` + `BOT_NAME` + `COMMAD` to talk to your bot
+
 Example: `!bot help`
 
 [Bot Commands](BOT_COMMANDS.md)
@@ -29,7 +29,7 @@ Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` ca
 
 # [Discobot in Docker](DOCKER.md)
 
-### Contributing
+# Contributing
 
 This is a truly open project! 
 
