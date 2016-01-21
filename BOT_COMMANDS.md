@@ -1,15 +1,17 @@
-`ping - say pong`
+`ping             - say pong`
 
-`giphy <term> - post a damn giph`
+`giphy <term>     - post a damn giph`
 
-`(╯°□°）╯︵ ┻━┻	 - will flip all table back upright`
+`(╯°□°）╯︵ ┻━┻   - will flip all table back upright`
 
-`yomama - tell a yo mama joke`
+`yomama           - tell a yo mama joke`
 
-`xkcd - get todays xkcd comic`
+`xkcd             - get todays xkcd comic`
 
-`fortune - get a random fortune message`
+`fortune          - get a random fortune message`
 
-`game - set bots game title`
+`game             - set bots game title`
 
-`roll - roll some dice! (try roll 2d10)`
+`roll             - roll some dice! (try roll 2d10)`
+
+`who is the scrub - Finds the scrub`
