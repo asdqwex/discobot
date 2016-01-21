@@ -142,7 +142,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'xkcd            - get todays xkcd comic',
         'fortune         - get a random fortune message',
         'game            - set bots game title',
-        'roll            - roll some dice'
+        'roll            - roll some dice! (try roll 2d10)'
       ].join('\n')
     })
   }

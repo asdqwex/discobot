@@ -11,3 +11,5 @@
 `fortune - get a random fortune message`
 
 `game - set bots game title`
+
+`roll - roll some dice! (try roll 2d10)`
