@@ -3,13 +3,9 @@
 var random = require('random-js')()
 
 module.exports = {
-  names: ['decide'],
+  names: ['decide', 'pick'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
-    var messages = message.split(' ')
-    messages.shift()
-    messages.splice(1, 1)
-    const chosenValue = random.integer(0, 1)
-    const thing = messages[chosenValue]
+    const thing = random.pick(message.split(' ').slice(1).filter(x => x !== 'or'))
     bot.sendMessage({
       to: channelID,
       message: thing
