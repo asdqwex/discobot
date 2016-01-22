@@ -1,5 +1,6 @@
 'use strict'
 import Flipper from 'imgflipper'
+const imgFlip = new Flipper('discobot1', 'discobotpass123')
 module.exports = {
   names: ['meme'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
@@ -53,7 +54,6 @@ module.exports = {
       'yodawg': 101716,
       'yuno': 61527
     }
-    const imgFlip = new Flipper('discobot1', 'discobotpass123')
     const memeTopText = imgParts[1] ? imgParts[1] : ''
     const memeBottomText = imgParts[3] ? imgParts[3] : ''
     imgFlip.generateMeme(
