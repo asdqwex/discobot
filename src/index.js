@@ -90,7 +90,7 @@ const setupBot = function () {
 const onReady = function () {
 // Cron Jobby bit
 
-  schedule.scheduleJob('0 0 0 * *', function () {
+  schedule.scheduleJob('xkcd', '0 0 0 * *', function () {
     modules['xkcd'].onMessage(bot, false, false, '131193711743729664', false, false)
   })
 // Bot tells us who it is in the test channel
