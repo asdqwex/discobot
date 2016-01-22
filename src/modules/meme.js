@@ -1,5 +1,5 @@
 'use strict'
-const Flipper = require('imgflipper')
+import Flipper from 'imgflipper'
 module.exports = {
   names: ['meme'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
