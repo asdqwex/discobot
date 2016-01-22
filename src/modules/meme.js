@@ -11,6 +11,7 @@ module.exports = {
       'allthethings': 61533,
       'amitheonly': 259680,
       'awkward': 13757816,
+      'bane': 113090,
       'blb': 61585,
       'brace': 61546,
       'collegeliberal': 74914,
