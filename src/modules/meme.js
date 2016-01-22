@@ -53,15 +53,19 @@ module.exports = {
       'yodawg': 101716,
       'yuno': 61527
     }
-    var imgFlip = new Flipper('discobot1', 'discobotpass123')
-    imgFlip.generateMeme(memeList[memeType], imgParts[1] ? imgParts[1] : '', imgParts[3] ? imgParts[3] : '', function (err, image) {
-      bot.sendMessage({
-        to: channelID,
-        message: image
+    const imgFlip = new Flipper('discobot1', 'discobotpass123')
+    const memeTopText = imgParts[1] ? imgParts[1] : ''
+    const memeBottomText = imgParts[3] ? imgParts[3] : ''
+    imgFlip.generateMeme(
+      memeList[memeType], memeTopText, memeBottomText, function (err, image) {
+        if (err) {
+          console.log(err)
+          return
+        }
+        bot.sendMessage({
+          to: channelID,
+          message: image
+        })
       })
-      if (err) {
-        console.log(err)
-      }
-    })
   }
 }
