@@ -3,9 +3,9 @@ import Flipper from 'imgflipper'
 module.exports = {
   names: ['meme'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
-    var imgParts = message.split('"')
-    var memeType = imgParts[0].split(' ')[1]
-    var memeList = {
+    const imgParts = message.split('"')
+    const memeType = imgParts[0].split(' ')[1]
+    const memeList = {
       '10guy': 101440,
       'allthethings': 61533,
       'amitheonly': 259680,
