@@ -144,7 +144,9 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'game                    - set bots game title',
         'roll                    - roll some dice! (try roll 2d10)',
         'who is the scrub        - Finds the scrub',
-        'decide thing1 or thing2 - pick randomly between the two'
+        'decide thing1 or thing2 - pick randomly between the two',
+        'remind me at 00:00 01/12 thing   - Reminds you of something at the given time',
+        'meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes'
       ].join('\n')
     })
   }
