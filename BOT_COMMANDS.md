@@ -17,3 +17,5 @@
 `who is the scrub 		 - Finds the scrub`
 
 `decide thing1 or thing2 - pick randomly between the two`
+
+`meme <memeName> "topText" "bottomText" - generates in image macro with the specified attributes`
