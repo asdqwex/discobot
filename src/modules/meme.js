@@ -57,7 +57,9 @@ module.exports = {
     const memeTopText = imgParts[1] ? imgParts[1] : ''
     const memeBottomText = imgParts[3] ? imgParts[3] : ''
     imgFlip.generateMeme(
-      memeList[memeType], memeTopText, memeBottomText, function (err, image) {
+      memeList[memeType], memeTopText,
+      memeBottomText,
+      (err, image) => {
         if (err) {
           console.log(err)
           return
