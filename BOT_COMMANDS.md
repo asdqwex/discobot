@@ -18,4 +18,4 @@
 
 `decide thing1 or thing2 - pick randomly between the two`
 
-`meme <memeName> "topText" "bottomText" - generates in image macro with the specified attributes`
+`meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes`
