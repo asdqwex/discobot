@@ -27,7 +27,7 @@ module.exports = {
           to: channelID,
           message: '@' + user + ' This is your reminder: ' + reminder
         })
-      }
+      })
     } else if (verb === 'list') {
       var msg_data = []
       for (var job in schedule.scheduledJobs) {
