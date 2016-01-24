@@ -137,7 +137,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         ' ',
         'ping                    - say pong',
         'giphy <term>            - post a damn giph',
-        '(╯°□°）╯︵ ┻━┻          - will flip all table back upright',
+        '(╯°□°）╯︵ ┻━┻            - will flip all table back upright',
         'yomama                  - tell a yo mama joke',
         'xkcd                    - get todays xkcd comic',
         'fortune                 - get a random fortune message',
@@ -145,7 +145,8 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'roll                    - roll some dice! (try roll 2d10)',
         'who is the scrub        - Finds the scrub',
         'decide thing1 or thing2 - pick randomly between the two',
-        'meme <memeName> "topText" "bottomText"'
+        'meme <memeName> "topText" "bottomText"',
+        'join <inviteLink>       - join specified server'
       ].join('\n')
     })
   }
