@@ -137,7 +137,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         ' ',
         'ping                    - say pong',
         'giphy <term>            - post a damn giph',
-        '(╯°□°）╯︵ ┻━┻            - will flip all table back upright',
+        '(╯°□°）╯︵ ┻━┻      - will flip all table back upright',
         'yomama                  - tell a yo mama joke',
         'xkcd                    - get todays xkcd comic',
         'fortune                 - get a random fortune message',
