@@ -1,6 +1,6 @@
 'use strict'
 
-var request = require('request')
+const request = require('request')
 
 module.exports = {
   names: ['yomama'],

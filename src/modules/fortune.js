@@ -1,6 +1,6 @@
 'use strict'
 
-var teller = require('fortune-teller')
+const teller = require('fortune-teller')
 
 module.exports = {
   names: ['fortune'],

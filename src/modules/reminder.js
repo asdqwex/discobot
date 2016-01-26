@@ -1,6 +1,6 @@
 'use strict'
 
-var schedule = require('node-schedule')
+const schedule = require('node-schedule')
 
 module.exports = {
   names: ['remind me', 'reminder'],
