@@ -1,8 +1,15 @@
-# Discobot [![Discobot](https://i.imgur.com/qtffWzX.png)](https://github.com/asdqwex/discobot) [![Build Status](https://img.shields.io/circleci/project/asdqwex/discobot/master.svg?style=flat-square)](https://circleci.com/gh/asdqwex/discobot) [![npm version](https://img.shields.io/npm/v/discobot.svg?style=flat-square)](https://www.npmjs.com/package/discobot) [![Code Climate](https://img.shields.io/codeclimate/github/asdqwex/discobot.svg?style=flat-square)](https://codeclimate.com/github/asdqwex/discobot) [![Dependency Status](https://img.shields.io/david/asdqwex/discobot.svg?style=flat-square)](https://david-dm.org/asdqwex/discobot) [![devDependency Status](https://img.shields.io/david/dev/asdqwex/discobot.svg?style=flat-square)](https://david-dm.org/asdqwex/discobot#info=devDependencies) [![npm downloads](https://img.shields.io/npm/dm/discobot.svg?style=flat-square)](https://www.npmjs.com/package/discobot) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/asdqwex/discobot) [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.png?label=ready&title=Ready)](https://waffle.io/asdqwex/discobot)
+<p align="center">
+  <a href="https://github.com/asdqwex/discobot">
+    <img height="236" width="157" src="https://i.imgur.com/qtffWzX.png">
+  </a>
+</p>
 
-A chat bot for [Discord](discordapp.com) built with JavaScript using [Discord.io](https://github.com/izy521/discord.io)!
+# Discobot
+**A chat bot for [Discord](discordapp.com)**
 
-# Usage:
+[![Build Status](https://img.shields.io/circleci/project/asdqwex/discobot/master.svg?style=flat-square)](https://circleci.com/gh/asdqwex/discobot) [![npm version](https://img.shields.io/npm/v/discobot.svg?style=flat-square)](https://www.npmjs.com/package/discobot) [![Code Climate](https://img.shields.io/codeclimate/github/asdqwex/discobot.svg?style=flat-square)](https://codeclimate.com/github/asdqwex/discobot) [![Dependency Status](https://img.shields.io/david/asdqwex/discobot.svg?style=flat-square)](https://david-dm.org/asdqwex/discobot) [![devDependency Status](https://img.shields.io/david/dev/asdqwex/discobot.svg?style=flat-square)](https://david-dm.org/asdqwex/discobot#info=devDependencies) [![npm downloads](https://img.shields.io/npm/dm/discobot.svg?style=flat-square)](https://www.npmjs.com/package/discobot) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/asdqwex/discobot) [![Stories in Ready](https://badge.waffle.io/asdqwex/discobot.png?label=ready&title=Ready)](https://waffle.io/asdqwex/discobot)
+
+## Usage:
  - Install: `npm install -g discobot`
  - Use: `DISCORD_EMAIL=foo DISCORD_PASSWORD=bar discobot`
 
@@ -10,7 +17,7 @@ Use `HAILING` + `BOT_NAME` + `COMMAND` to talk to your bot
 
 Example: `!bot help`
 
-# Configuration
+## Configuration
 
 |environment variable|default|required|
 |---|---|---|
@@ -25,11 +32,11 @@ Example: `!bot help`
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 
-# Bot Commands
+## Bot Commands
 
 Use `!bot help` to get a list of commands, or take a peek at the `/src/modules/` directory
 
-# [Docker](DOCKER.md)
+## [Docker](DOCKER.md)
 
 This is a truly open project!
 
