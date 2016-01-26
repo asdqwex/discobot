@@ -43,7 +43,8 @@
     "request": "^2.67.0",
     "sifter": "^0.4.5",
     "urban": "^0.3.0",
-    "xregexp": "^3.0.0"
+    "xregexp": "^3.0.0",
+    "youtube-search": "^1.0.4"
   },
   "devDependencies": {
     "babel": "^6.3.26",
