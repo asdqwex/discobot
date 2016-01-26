@@ -36,7 +36,7 @@ Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` ca
 
 Use `!bot help` to get a list of commands, or take a peek at the `/src/modules/` directory
 
-## [Docker](DOCKER.md)
+## [Development](DEV.md)
 
 This is a truly open project!
 

@@ -22,3 +22,9 @@ Typically the package is called `ffmpeg` - `libav-tools` will also work.
 5. Submit PR
 6. Wait for tests to pass
 7. Merge
+
+# Docker:
+
+We also publish a docker image for each new version so if you prefer to run Discobot as a container.
+
+`docker run -e "DISCORD_EMAIL=discord@email.com" -e "DISCORD_PASSWORD=some_password" -it erulabs/discobot`
