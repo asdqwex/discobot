@@ -20,6 +20,7 @@ module.exports = {
         'decide thing1 or thing2 - pick randomly between the two',
         'remind me at 00:00 01/12 thing   - Reminds you of something at the given time',
         'meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes',
+        'urban <term)             - return the urban dictionary page for a term or use random for the lols',
         '\n'
       ].join('\n')
     })

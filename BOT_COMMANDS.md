@@ -22,3 +22,5 @@
 
 `remind me at 00:00 01/12 thing   - Reminds you of something at the given time`
 
+`urban <term)             - return the urban dictionary page for a term or use random for the lols`
+
