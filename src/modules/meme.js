@@ -19,6 +19,7 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         'brace': 61546,
         'collegeliberal': 74914,
         'confession': 100955,
+        'craig': 19032513,
         'doge': 8072285,
         'dontyousquidward': 101511,
         'drevil': 40945639,
