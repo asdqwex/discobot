@@ -29,6 +29,8 @@ Example: `!bot help`
 |`BOT_NAME`| bot | - |
 |`HAILING`| ! | - |
 |`NO_HAILING`| false | - |
+|`IMGFLIP_USER`| - | - |
+|`IMGFLIP_PASSWORD`| - | - |
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 
