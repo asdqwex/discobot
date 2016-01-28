@@ -15,6 +15,7 @@ module.exports = {
         'xkcd				             - get todays xkcd comic',
         'fortune			           - get a random fortune message',
         'game                    - set bots game title',
+        'goodshit                - Good shit.',
         'roll                    - roll some dice! (try roll 2d10)',
         'who is the scrub        - Finds the scrub',
         'decide thing1 or thing2 - pick randomly between the two',
