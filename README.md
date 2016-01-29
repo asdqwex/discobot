@@ -31,7 +31,8 @@ Example: `!bot help`
 |`NO_HAILING`| false | - |
 |`IMGFLIP_USER`| - | - |
 |`IMGFLIP_PASSWORD`| - | - |
-|`YOUTUBE_API`| - | - |
+|`GOOGLE_KEY`| - | - |
+|`GOOGLE_CSE_ID`| - | - |
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 

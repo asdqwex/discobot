@@ -36,6 +36,7 @@
     "fortune-teller": "^0.1.2",
     "giphy-api": "^1.1.11",
     "glob": "^6.0.3",
+    "googleapis": "^2.1.7",
     "imgflipper": "^1.0.1",
     "node-opus": "^0.1.11",
     "node-schedule": "^0.6.0",

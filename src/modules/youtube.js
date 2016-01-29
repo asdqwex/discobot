@@ -1,12 +1,12 @@
 'use strict'
 
-if (!process.env.YOUTUBE_KEY) {
-  console.log('Missing youtube api key, this module will not be loaded.')
+if (!process.env.GOOGLE_KEY) {
+  console.log('Missing Google api key, this module will not be loaded.')
 } else {
   const search = require('youtube-search')
   const opts = {
     maxResults: 50,
-    key: process.env.YOUTUBE_KEY
+    key: process.env.GOOGLE_KEY
   }
   module.exports = {
     names: ['youtube'],
