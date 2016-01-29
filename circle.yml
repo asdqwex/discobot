@@ -9,17 +9,17 @@ dependencies:
   override:
     - npm install
 
-# test:
-#   override:
-#     - ./node_modules/.bin/gulp finalize
-#     - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
-#     - make pull || true
-#     - make
+test:
+  override:
+    - ./node_modules/.bin/gulp finalize
+    - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
+    - make pull || true
+    - make
 
 deployment:
   master:
     branch: master
     commands:
-#      - make push
+      - make push
       - echo -e "$NPM_USERNAME\n$NPM_PASSWORD\nfoo@foo.com" | npm login
       - npm publish || true
