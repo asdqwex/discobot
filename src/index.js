@@ -149,7 +149,8 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
         'meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes',
         'urban <term)             - return the urban dictionary page for a term or use random for the lols',
         'youtube <term>           - return youtube search for term',
-        'img <term>               - return google image search result for term'
+        'img <term>               - return google image search result for term',
+        '8ball <question>	  - answer question with random result'
       ].join('\n')
     })
   }
