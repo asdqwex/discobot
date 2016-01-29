@@ -23,7 +23,7 @@ module.exports = {
         'meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes',
         'urban <term>             - return the urban dictionary page for a term or use random for the lols',
         'youtube <term>           - return youtube search for term',
-        '8ball <question>	  - answer question with random result'
+        '8ball <question>	  - answer question with random result',
         '\n'
       ].join('\n')
     })
