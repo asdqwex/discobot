@@ -47,3 +47,9 @@ Use `!bot help` to get a list of commands, or take a peek at the `/src/modules/`
 This is a truly open project!
 
 Pull requests will be merged and we will happily give out contributor access to those who contribute!
+
+Also if you contribute 50 lines of code or more you will recieve a free T-shirt!
+
+![yes boiz](http://imgur.com/a/VEqsS "Sweet sweet T-shirts")
+
+
