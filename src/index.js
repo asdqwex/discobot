@@ -132,26 +132,7 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
   if (message === hailing_frequency || message === hailing_frequency + '--help' || message === hailing_frequency + 'help' || message === hailing_frequency + 'commands') {
     return bot.sendMessage({
       to: channelID,
-      message: [
-        'Here are the things I can do for you master:',
-        ' ',
-        'ping                    - say pong',
-        'giphy <term>            - post a damn giph',
-        '(╯°□°）╯︵ ┻━┻          - will flip all table back upright',
-        'yomama                  - tell a yo mama joke',
-        'xkcd                    - get todays xkcd comic',
-        'fortune                 - get a random fortune message',
-        'game                    - set bots game title',
-        'roll                    - roll some dice! (try roll 2d10)',
-        'who is the scrub        - Finds the scrub',
-        'decide thing1 or thing2 - pick randomly between the two',
-        'remind me at 00:00 01/12 thing   - Reminds you of something at the given time',
-        'meme <memeName> "topText" "bottomText" - generates an image macro with the specified attributes',
-        'urban <term)             - return the urban dictionary page for a term or use random for the lols',
-        'youtube <term>           - return youtube search for term',
-        'img <term>               - return google image search result for term',
-        '8ball <question>	  - answer question with random result'
-      ].join('\n')
+      message: modules['help']['data'].join('\n')
     })
   }
   const trimmed = message.replace(hailing_frequency + ' ', '').trimLeft()
