@@ -95,6 +95,7 @@ const setupBot = function () {
   })
 }
 
+bot._presences = {}
 const onReady = function () {
 // Cron Jobby bit
 
@@ -109,12 +110,14 @@ const onReady = function () {
 // Other actions
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
-    if (game) {
-      return bot.sendMessage({
+    // Say nothing if the user is playing the same game but just went idle
+    if ((bot._presences[id] && bot._presences[id].game !== game) || (!bot._presences[id] && game)) {
+      bot.sendMessage({
         to: bot.my_general_channel.id,
         message: `${name} has begun playing ${game}!`
       })
     }
+    bot._presences[id] = { name, status, game }
   })
   bot.joinVoiceChannel(bot.my_voice_channel.id)
 }
