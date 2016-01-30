@@ -51,6 +51,6 @@ Pull requests will be merged and we will happily give out contributor access to 
 Also if you contribute 50 lines of code or more you will recieve a free T-shirt!
 
 ![yes boiz](http://i.imgur.com/5F36IbQ.jpg "Sweet sweet T-shirts")
-![yes boiz](http://i.imgur.com/C825o8b.jpg "Sweet sweet T-shirts")
+![yes boiz](http://i.imgur.com/1MOyG1K.jpg "Sweet sweet T-shirts")
 
 
