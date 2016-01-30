@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/asdqwex/discobot#readme",
   "dependencies": {
-    "discord.io": "^1.6.5",
+    "discord.io": "^1.7.1",
     "fortune-teller": "^0.1.2",
     "giphy-api": "^1.1.11",
     "glob": "^6.0.3",
@@ -41,7 +41,7 @@
     "node-opus": "^0.1.11",
     "node-schedule": "^0.6.0",
     "random-js": "^1.0.8",
-    "request": "^2.67.0",
+    "request": "^2.69.0",
     "sifter": "^0.4.5",
     "urban": "^0.3.0",
     "xregexp": "^3.0.0",

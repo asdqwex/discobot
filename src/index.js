@@ -7,26 +7,34 @@ const Sifter = require('sifter')
 const schedule = require('node-schedule')
 import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
+const fs = require('fs')
+let configBlock = {}
 
 const dependencies = {
   random
 }
 
-// All configuration is done via Environment Variables
-if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
-  console.log(`Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables`)
-  process.exit(1)
+if (fs.existsSync('.config')) {
+  configBlock = JSON.parse(fs.readFileSync('.config', 'utf8'))
+} else {
+  configBlock.DISCORD_EMAIL = process.env.DISCORD_EMAIL
+  configBlock.DISCORD_PASSWORD = process.env.DISCORD_PASSWORD
+  if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
+    console.log(`Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables`)
+    process.exit(1)
+  }
 }
+// Initialization
+const bot = new DiscordClient({
+  email: configBlock.DISCORD_EMAIL,
+  password: configBlock.DISCORD_PASSWORD,
+  autorun: true
+})
+
 if (!process.env.DISCORD_GUILD) console.warn(`Warning: DISCORD_GUILD unset - joining first guild`)
 if (!process.env.DISCORD_VOICE_CHANNEL) console.warn(`Warning: DISCORD_VOICE_CHANNEL unset - joining 'General'`)
 if (!process.env.DISCORD_TEXT_CHANNEL) console.warn(`Warning: DISCORD_TEXT_CHANNEL unset - joining 'general'`)
 
-// Initialization
-const bot = new DiscordClient({
-  email: process.env.DISCORD_EMAIL,
-  password: process.env.DISCORD_PASSWORD,
-  autorun: true
-})
 bot.BOT_NAME = process.env.BOT_NAME || 'bot'
 // This is the default text channel that
 bot.DISCORD_GUILD = process.env.DISCORD_GUILD || undefined
