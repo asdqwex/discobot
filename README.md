@@ -33,6 +33,8 @@ Example: `!bot help`
 |`IMGFLIP_PASSWORD`| - | - |
 |`GOOGLE_KEY`| - | - |
 |`GOOGLE_CSE_ID`| - | - |
+|`RIOT_API_KEY`| - | - |
+
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 

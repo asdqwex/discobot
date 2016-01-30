@@ -21,12 +21,13 @@ module.exports = {
     'urban <term>             - return the urban dictionary page for a term or use random for the lols',
     'youtube <term>           - return youtube search for term',
     '8ball <question>   - answer question with random result',
+    'lol status         - return status of league servers',
     '\n'
-    ],
+  ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
     bot.sendMessage({
       to: channelID,
-      message: data
+      message: this.data.join('\n')
     })
   }
 }
