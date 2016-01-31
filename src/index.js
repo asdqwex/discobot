@@ -111,7 +111,7 @@ const onReady = function () {
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
     // Say nothing if the user is playing the same game but just went idle
-    if ((bot._presences[id] && bot._presences[id].game !== game) || (!bot._presences[id] && game)) {
+    if (game && ((bot._presences[id] && bot._presences[id].game !== game) || !bot._presences[id])) {
       bot.sendMessage({
         to: bot.my_general_channel.id,
         message: `${name} has begun playing ${game}!`

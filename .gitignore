@@ -8,3 +8,4 @@ _build
 *.tmp
 *.swp
 _quotes_db.json
+.secrets
