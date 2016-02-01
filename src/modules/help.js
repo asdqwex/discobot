@@ -22,6 +22,7 @@ module.exports = {
     'youtube <term>           - return youtube search for term',
     '8ball <question>   - answer question with random result',
     'lol status         - return status of league servers',
+    'say <phrase>	- utilize TTS to speak phrase',
     '\n'
   ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
