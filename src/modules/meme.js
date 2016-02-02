@@ -48,6 +48,7 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         'scumbagsteve': 61522,
         'skeptical': 101288,
         'sohot': 21604248,
+        'sparednoexpense': 25325624,
         'spiderman': 1366993,
         'success': 61544,
         'successfulblack': 61545,
