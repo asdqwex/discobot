@@ -23,6 +23,7 @@ module.exports = {
     '8ball <question>   - answer question with random result',
     'lol status         - return status of league servers',
     'say <phrase>	- utilize TTS to speak phrase',
+    'coin		- flips a coin',
     '\n'
   ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
