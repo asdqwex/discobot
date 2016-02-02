@@ -45,7 +45,6 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         'notime': 442575,
         'onedoesnot': 61579,
         'raptor': 61516,
-        'rockdriving': 21735,
         'satisfied': 23909796,
         'scumbagsteve': 61522,
         'skeptical': 101288,
