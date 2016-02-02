@@ -50,6 +50,7 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         'sohot': 21604248,
         'spiderman': 1366993,
         'success': 61544,
+        'successfulblack': 61545,
         'sushi': 11512189,
         'toodamnhigh': 61580,
         'unhelpful': 100957,
