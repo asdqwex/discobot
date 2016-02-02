@@ -15,7 +15,7 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         'amitheonly': 259680,
         'awkward': 13757816,
         'bane': 113090,
-        'badjoke' 101237,
+        'badjoke': 101237,
         'blb': 61585,
         'brace': 61546,
         'collegeliberal': 74914,
