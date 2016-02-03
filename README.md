@@ -64,9 +64,11 @@ This is a truly open project!
 
 Pull requests will be merged and we will happily give out contributor access to those who contribute!
 
-Also if you contribute 50 lines of code or more you will recieve a free T-shirt!
+We have prizes for anyone that contributes code!
 
-![yes boiz](http://i.imgur.com/5F36IbQ.jpg "Sweet sweet T-shirts")
-![yes boiz](http://i.imgur.com/1MOyG1K.jpg "Sweet sweet T-shirts")
+|  Lines Contributed | Prize                     |                                                                                          |
+|--------------------|---------------------------|------------------------------------------------------------------------------------------|
+|               50   | Discobot Sticker          | ![](http://i.imgur.com/9lnhBPp.jpg =50x50)                                             |
+|               100  | Discobot T-Shirt          | ![](http://i.imgur.com/5F36IbQ.jpg =50x50) ![](http://i.imgur.com/1MOyG1K.jpg =50x50)|
 
 

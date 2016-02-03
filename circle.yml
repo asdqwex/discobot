@@ -12,7 +12,7 @@ dependencies:
 test:
   override:
     - ./node_modules/.bin/gulp finalize
-    - docker login -e="." -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}" quay.io
+    - docker login -e="${DOCKER_EMAIL}" -u="${DOCKER_USERNAME}" -p="${DOCKER_PASSWORD}"
     - make pull || true
     - make
 
