@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Discobot : bot 4 discord">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Discobot</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/asdqwex/discobot">View on GitHub</a>
+
+          <h1 id="project_title">Discobot</h1>
+          <h2 id="project_tagline">bot 4 discord</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/asdqwex/discobot/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/asdqwex/discobot/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p align="center">
+  <a href="https://github.com/asdqwex/discobot">
+    <img height="236" width="157" src="https://i.imgur.com/qtffWzX.png">
+  </a>
+</p>
+
+<h1>
+<a id="discobot" class="anchor" href="#discobot" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Discobot</h1>
+
+<p><strong>A chat bot for <a href="discordapp.com">Discord</a></strong></p>
+
+<p><a href="https://circleci.com/gh/asdqwex/discobot"><img src="https://img.shields.io/circleci/project/asdqwex/discobot/master.svg?style=flat-square" alt="Build Status"></a> <a href="https://www.npmjs.com/package/discobot"><img src="https://img.shields.io/npm/v/discobot.svg?style=flat-square" alt="npm version"></a> <a href="https://codeclimate.com/github/asdqwex/discobot"><img src="https://img.shields.io/codeclimate/github/asdqwex/discobot.svg?style=flat-square" alt="Code Climate"></a> <a href="https://david-dm.org/asdqwex/discobot"><img src="https://img.shields.io/david/asdqwex/discobot.svg?style=flat-square" alt="Dependency Status"></a> <a href="https://david-dm.org/asdqwex/discobot#info=devDependencies"><img src="https://img.shields.io/david/dev/asdqwex/discobot.svg?style=flat-square" alt="devDependency Status"></a> <a href="https://www.npmjs.com/package/discobot"><img src="https://img.shields.io/npm/dm/discobot.svg?style=flat-square" alt="npm downloads"></a> <a href="https://github.com/asdqwex/discobot"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="js-standard-style"></a> <a href="https://waffle.io/asdqwex/discobot"><img src="https://badge.waffle.io/asdqwex/discobot.png?label=ready&amp;title=Ready" alt="Stories in Ready"></a></p>
+
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage:</h2>
+
+<ul>
+<li>Install: <code>npm install -g discobot</code>
+</li>
+<li>Use: <code>DISCORD_EMAIL=foo DISCORD_PASSWORD=bar discobot</code>
+</li>
+</ul>
+
+<p>Use <code>HAILING</code> + <code>BOT_NAME</code> + <code>COMMAND</code> to talk to your bot</p>
+
+<p>Example: <code>!bot help</code></p>
+
+<h2>
+<a id="configuration" class="anchor" href="#configuration" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Configuration</h2>
+
+<p>Discobot will read these config variable in from a .config file that is json formatted. So you can create a file that looks like the following with your configuration options in it.</p>
+
+<pre><code>{
+    "RIOT_API_KEY": "xxx",
+    "GOOGLE_CSE_ID": "xxx",
+    "IMGFLIP_USER": "xxx",
+    "IMGFLIP_PASSWORD": "!xxx",
+    ... etc
+}
+</code></pre>
+
+<p>You can also pass config variables in on the cli when running the bot like so:</p>
+
+<p><code>HAILING='!' BOT_NAME='' DISCORD_EMAIL=xxx DISCORD_PASSWORD=xxx DISCORD_VOICE_CHANNEL=General discobot</code></p>
+
+<p>List of Configuration options:</p>
+
+<table>
+<thead>
+<tr>
+<th>environment variable</th>
+<th>default</th>
+<th>required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DISCORD_EMAIL</code></td>
+<td>-</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>DISCORD_PASSWORD</code></td>
+<td>-</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><code>DISCORD_GUILD</code></td>
+<td>Will connect to first guild in accounts roster</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>DISCORD_VOICE_CHANNEL</code></td>
+<td>Will connect to the General voice channel</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>DISCORD_TEXT_CHANNEL</code></td>
+<td>Will connect to the general voice chat</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>BOT_NAME</code></td>
+<td>bot</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>HAILING</code></td>
+<td>!</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>NO_HAILING</code></td>
+<td>false</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>IMGFLIP_USER</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>IMGFLIP_PASSWORD</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>GOOGLE_KEY</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>GOOGLE_CSE_ID</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>RIOT_API_KEY</code></td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+
+<p>Note that <code>DISCORD_GUILD</code>, <code>DISCORD_VOICE_CHANNEL</code> and <code>DISCORD_TEXT_CHANNEL</code> can be either names or IDs</p>
+
+<h2>
+<a id="bot-commands" class="anchor" href="#bot-commands" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Bot Commands</h2>
+
+<p>Use <code>!bot help</code> to get a list of commands, or take a peek at the <code>/src/modules/</code> directory</p>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><a href="DEV.md">Development</a>
+</h2>
+
+<p>This is a truly open project!</p>
+
+<p>Pull requests will be merged and we will happily give out contributor access to those who contribute!</p>
+
+<p>We have prizes for anyone that contributes code!</p>
+
+<table>
+<thead>
+<tr>
+<th>Lines Contributed</th>
+<th>Prize</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>50</td>
+<td>Discobot Sticker</td>
+<td><img src="http://i.imgur.com/9lnhBPp.jpg%20=50x50" alt=""></td>
+</tr>
+<tr>
+<td>100</td>
+<td>Discobot T-Shirt</td>
+<td>
+<img src="http://i.imgur.com/5F36IbQ.jpg%20=50x50" alt=""> <img src="http://i.imgur.com/1MOyG1K.jpg%20=50x50" alt="">
+</td>
+</tr>
+</tbody>
+</table>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Discobot maintained by <a href="https://github.com/asdqwex">asdqwex</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
