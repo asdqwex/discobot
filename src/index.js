@@ -31,23 +31,27 @@ const bot = new DiscordClient({
   autorun: true
 })
 
+Object.keys(configBlock).forEach(function (key) {
+  process.env[key] = configBlock[key]
+})
+
 if (!process.env.DISCORD_GUILD) console.warn(`Warning: DISCORD_GUILD unset - joining first guild`)
 if (!process.env.DISCORD_VOICE_CHANNEL) console.warn(`Warning: DISCORD_VOICE_CHANNEL unset - joining 'General'`)
 if (!process.env.DISCORD_TEXT_CHANNEL) console.warn(`Warning: DISCORD_TEXT_CHANNEL unset - joining 'general'`)
 
-bot.BOT_NAME = process.env.BOT_NAME || 'bot'
+bot.BOT_NAME = process.env.BOT_NAME || configBlock.BOT_NAME
 // This is the default text channel that
-bot.DISCORD_GUILD = process.env.DISCORD_GUILD || undefined
-bot.DISCORD_TEXT_CHANNEL = process.env.DISCORD_TEXT_CHANNEL || 'general'
-bot.DISCORD_VOICE_CHANNEL = process.env.DISCORD_VOICE_CHANNEL || 'General'
+bot.DISCORD_GUILD = process.env.DISCORD_GUILD || configBlock.DISCORD_GUILD || undefined
+bot.DISCORD_TEXT_CHANNEL = process.env.DISCORD_TEXT_CHANNEL || configBlock.DISCORD_TEXT_CHANNEL || 'general'
+bot.DISCORD_VOICE_CHANNEL = process.env.DISCORD_VOICE_CHANNEL || configBlock.DISCORD_VOICE_CHANNEL || 'General'
 
 // We will load all the code from the "modules" directory, and put the object each file exports into this array:
 const modules = {}
 // Used to sort thru modules
 let sifter
 // The bots name plus the identifier
-let hailing_frequency = (process.env.HAILING || '!') + bot.BOT_NAME
-if (process.env.NO_HAILING) hailing_frequency = bot.BOT_NAME
+let hailing_frequency = (process.env.HAILING || configBlock.HAILING || '!') + bot.BOT_NAME
+if (process.env.NO_HAILING || configBlock.NO_HAILING) hailing_frequency = bot.BOT_NAME
 
 const initialize = function () {
   glob('_build/modules/*.js', function (err, files) {
