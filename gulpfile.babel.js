@@ -17,25 +17,25 @@ const MODULES_GLOB = `${SRC}/modules/**/*.js`
 const MAIN_GLOB = `${SRC}/*.js`
 
 gulp.task('clean', function () {
-  del(DEST)
+  return del(DEST)
 })
 
 gulp.task('main', function () {
-  return gulp.src(MAIN_GLOB)
+  gulp.src(MAIN_GLOB)
     .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
-		.pipe(babel({ presets: [ 'es2015' ] }))
+    .pipe(babel({ presets: [ 'es2015' ] }))
     .pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(DEST))
+    .pipe(gulp.dest(DEST))
 })
 
 gulp.task('modules', function () {
-  return gulp.src(MODULES_GLOB)
+  gulp.src(MODULES_GLOB)
     .pipe(eslint()).pipe(eslint.format())
     .pipe(sourcemaps.init())
-		.pipe(babel({ presets: [ 'es2015' ] }))
+    .pipe(babel({ presets: [ 'es2015' ] }))
     .pipe(sourcemaps.write('.'))
-		.pipe(gulp.dest(`${DEST}/modules/`))
+    .pipe(gulp.dest(`${DEST}/modules/`))
 })
 
 gulp.task('watch', ['default'], function () {
@@ -59,4 +59,4 @@ gulp.task('test-watch', ['default'], function () {
   gulp.watch(MODULES_GLOB, ['modules', 'test'])
 })
 
-gulp.task('default', ['clean', 'main', 'modules', 'test'])
+gulp.task('default', ['main', 'modules', 'test'])

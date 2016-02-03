@@ -42,6 +42,7 @@
     "node-schedule": "^0.6.0",
     "random-js": "^1.0.8",
     "request": "^2.69.0",
+    "table": "^3.7.8",
     "sifter": "^0.4.5",
     "urban": "^0.3.0",
     "xregexp": "^3.0.0",

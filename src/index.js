@@ -8,7 +8,10 @@ const schedule = require('node-schedule')
 import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
 const fs = require('fs')
+import Table from 'table'
+
 let configBlock = {}
+let help_text = []
 
 const dependencies = {
   random
@@ -65,10 +68,13 @@ const initialize = function () {
           continue
         }
         modules[module.names[0]] = module
+        if (!module.help_text) module.help_text = 'Not documented'
+        help_text.push([module.names[0], module.help_text])
       } catch (e) {
         console.log(`Failed to load ${module}:`, e.message)
       }
     }
+    console.log(Table(help_text))
     sifter = new Sifter(modules)
     setupBot()
   })
