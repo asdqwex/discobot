@@ -19,7 +19,7 @@ Example: `!bot help`
 
 ## Configuration
 
-Discobot will read these config variable in from a .config file that is json formatted. So you can create a file that looks liek the following with your configuration options in it.
+Discobot will read these config variable in from a .config file that is json formatted. So you can create a file that looks like the following with your configuration options in it.
 
     {
         "RIOT_API_KEY": "xxx",
