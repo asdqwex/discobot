@@ -22,7 +22,7 @@ class QuoteDB {
   // Todo: Maybe fuzzy match across all quotes?
   random () {
     const keys = Object.keys(this.quotes)
-    const author = keys[Math.floor(Math.random(0, keys.length - 1))]
+    const author = keys[Math.floor(Math.random() * keys.length)]
     return {
       author, quote: this.quotes[author]
     }

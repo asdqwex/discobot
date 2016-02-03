@@ -1,6 +1,6 @@
 'use strict'
 
-import capitalize from './utils/capitalize'
+import capitalize from './utils/capitalize.js'
 import x from 'xregexp'
 x.install('natives')
 
