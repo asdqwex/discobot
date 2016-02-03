@@ -8,7 +8,6 @@ const schedule = require('node-schedule')
 import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
 const fs = require('fs')
-import Table from 'table'
 
 let configBlock = {}
 let help_text = []
@@ -74,7 +73,6 @@ const initialize = function () {
         console.log(`Failed to load ${module}:`, e.message)
       }
     }
-    console.log(Table(help_text))
     sifter = new Sifter(modules)
     setupBot()
   })
