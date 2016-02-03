@@ -19,6 +19,22 @@ Example: `!bot help`
 
 ## Configuration
 
+Discobot will read these config variable in from a .config file that is json formatted. So you can create a file that looks liek the following with your configuration options in it.
+
+    {
+        "RIOT_API_KEY": "xxx",
+        "GOOGLE_CSE_ID": "xxx",
+        "IMGFLIP_USER": "xxx",
+        "IMGFLIP_PASSWORD": "!xxx",
+        ... etc
+    }
+
+You can also pass config variables in on the cli when running the bot like so:
+
+ `HAILING='!' BOT_NAME='' DISCORD_EMAIL=xxx DISCORD_PASSWORD=xxx DISCORD_VOICE_CHANNEL=General discobot`
+
+ List of Configuration options:
+
 |environment variable|default|required|
 |---|---|---|
 |`DISCORD_EMAIL`| - | yes |
