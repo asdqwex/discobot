@@ -8,7 +8,7 @@ ifeq (${CIRCLE_BRANCH},)
 endif
 TAG=${CIRCLE_BRANCH}
 REPO=discobot
-ORG=quay.io/erulabs
+ORG=asdqwex
 
 DOCKER_CMD := ${DOCKER_CMD}
 ifeq (${DOCKER_CMD},)
