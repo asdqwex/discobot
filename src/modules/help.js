@@ -25,6 +25,7 @@ module.exports = {
     'say <phrase>	- utilize TTS to speak phrase',
     'coin		- flips a coin',
     'cat    - gets you a picture of a cat',
+    'wiki <term>  - searches wikipedia for term and returns a link',
     '\n'
   ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
