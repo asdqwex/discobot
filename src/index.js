@@ -115,6 +115,12 @@ const onReady = function () {
     to: '131193711743729664',
     message: 'Hello My Name is ' + hailing_frequency
   })
+// Set Bot UserName
+  bot.editUserInfo({
+    avatar: require('fs').readFileSync('discobot.png', 'base64'),
+    password: configBlock.DISCORD_PASSWORD,
+    username: process.env.BOT_NAME
+  })
 // Other actions
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
