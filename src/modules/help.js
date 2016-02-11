@@ -25,6 +25,7 @@ module.exports = {
     '    cat                             - gets you a picture of a cat',
     '    wiki <term>                     - searches wikipedia for term and returns a link',
     '    comic <term>                    - gets random web comic from site (currently only c&h',
+    '    !bots?                          - Force all bots to identify themselves',
     '\n'
   ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
