@@ -10,6 +10,7 @@ import prepend from 'prepend-file'
 import mocha from 'gulp-mocha'
 import fs from 'fs'
 
+const help = require('./src/modules/help.js')
 const DEST = '_build'
 const SRC = 'src'
 const TEST_GLOB = `test/**/*.js`
@@ -59,4 +60,16 @@ gulp.task('test-watch', ['default'], function () {
   gulp.watch(MODULES_GLOB, ['modules', 'test'])
 })
 
-gulp.task('default', ['main', 'modules', 'test'])
+gulp.task('help', function () {
+  if (fs.existsSync('MODS.md')) {
+    fs.unlink('MODS.md')
+  }
+  fs.writeFile('MODS.md', help.data.join('\n'), function(err) {
+    if(err) {
+        return console.log(err)
+    }
+    console.log("The MODS.md was written!")
+  })
+})
+
+gulp.task('default', ['main', 'modules', 'test', 'help'])
