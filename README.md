@@ -54,7 +54,7 @@ You can also pass config variables in on the cli when running the bot like so:
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
 
-## Bot Commands
+## [Bot Commands](MODS.md)
 
 Use `!bot help` to get a list of commands, or take a peek at the `/src/modules/` directory
 

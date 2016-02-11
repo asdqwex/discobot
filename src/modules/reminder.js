@@ -3,7 +3,7 @@
 const schedule = require('node-schedule')
 
 module.exports = {
-  names: ['remind me', 'reminder'],
+  names: ['reminder'],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
     var parts = message.split(' ')
     parts.splice(0, 2)
