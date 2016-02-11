@@ -24,7 +24,7 @@ module.exports = {
     '    coin                            - flips a coin',
     '    cat                             - gets you a picture of a cat',
     '    wiki <term>                     - searches wikipedia for term and returns a link',
-    '    comic <term>                    - gets random web comic from site (currently only explosm.net',
+    '    comic <term>                    - gets random web comic from site (currently only c&h',
     '\n'
   ],
   onMessage: function (bot, user, userID, channelID, message, rawEvent) {
