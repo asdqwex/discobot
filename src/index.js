@@ -139,6 +139,13 @@ const onReady = function () {
 const onMessage = function (user, userID, channelID, message, rawEvent) {
 // To get it working, Needs to be solved
 
+  if (message.indexOf('!bots?') > -1) {
+    return bot.sendMessage({
+      to: channelID,
+      message: 'Hello I am a robot and my name is ' + bot.BOT_NAME
+    })
+  }
+
   if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
     const count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
     const tableArray = []
