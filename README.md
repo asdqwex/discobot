@@ -50,6 +50,7 @@ You can also pass config variables in on the cli when running the bot like so:
 |`GOOGLE_KEY`| - | - |
 |`GOOGLE_CSE_ID`| - | - |
 |`RIOT_API_KEY`| - | - |
+|`TEST_CHANNEL`| - | Channel ID for bot connection announcment |
 
 
 Note that `DISCORD_GUILD`, `DISCORD_VOICE_CHANNEL` and `DISCORD_TEXT_CHANNEL` can be either names or IDs
