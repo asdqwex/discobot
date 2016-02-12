@@ -9,6 +9,7 @@ import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
 const fs = require('fs')
 
+let announceGuard = 0
 let configBlock = {}
 let help_text = []
 
@@ -106,6 +107,9 @@ const setupBot = function () {
 bot._presences = {}
 const onReady = function () {
 // Cron Jobby bit
+  schedule.scheduleJob('announceGuard', '*/5 * * * *', function () {
+    announceGuard = 0
+  })
 
   schedule.scheduleJob('xkcd', '0 0 0 * *', function () {
     modules['xkcd'].onMessage(bot, false, false, '131193711743729664', false, false)
@@ -125,7 +129,8 @@ const onReady = function () {
   bot.on('message', onMessage)
   bot.on('presence', function (name, id, status, game) {
     // Say nothing if the user is playing the same game but just went idle
-    if (game && ((bot._presences[id] && bot._presences[id].game !== game) || !bot._presences[id])) {
+    if (announceGuard === 0 && game && ((bot._presences[id] && bot._presences[id].game !== game) || !bot._presences[id])) {
+      announceGuard = 1
       bot.sendMessage({
         to: bot.my_general_channel.id,
         message: `${name} has begun playing ${game}!`
