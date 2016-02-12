@@ -112,11 +112,11 @@ const onReady = function () {
   })
 
   schedule.scheduleJob('xkcd', '0 0 0 * *', function () {
-    modules['xkcd'].onMessage(bot, false, false, '131193711743729664', false, false)
+    modules['xkcd'].onMessage(bot, false, false, process.env.TEST_CHANNEL, false, false)
   })
 // Bot tells us who it is in the test channel
   bot.sendMessage({
-    to: '131193711743729664',
+    to: process.env.TEST_CHANNEL,
     message: 'Hello My Name is ' + hailing_frequency
   })
 // Set Bot UserName
