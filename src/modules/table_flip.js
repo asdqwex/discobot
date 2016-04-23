@@ -6,7 +6,7 @@ module.exports = {
     //
     // Table flipper!
     //
-    if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1) {
+    if (message.indexOf('(╯°□°）╯︵ ┻━┻') > -1 && message.indexOf('will flip all table back upright') === -1) {
       const count = (message.match(/\(\╯\°\□\°\）\╯\︵ \┻\━\┻/g) || []).length
       const tableArray = []
       for (let i = 0; i < count; i++) {

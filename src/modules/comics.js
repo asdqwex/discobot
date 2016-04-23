@@ -1,6 +1,7 @@
 'use strict'
 
 var request = require('request')
+import { LOG } from './../logger.js'
 
 module.exports = {
   names: ['comic'],
@@ -9,7 +10,7 @@ module.exports = {
     if (term === 'c&h') {
       var r = request.get('http://explosm.net/comics/random', function (err, res, body) {
         if (err) {
-          console.log(err)
+          LOG.error(err)
         }
         bot.sendMessage({
           to: channelID,

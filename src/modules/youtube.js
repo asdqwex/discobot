@@ -1,7 +1,9 @@
 'use strict'
 
+import { LOG } from './../logger.js'
+
 if (!process.env.GOOGLE_KEY) {
-  console.log('Missing Google api key, this module will not be loaded.')
+  LOG.info('Missing Google api key, this module will not be loaded.')
 } else {
   const search = require('youtube-search')
   const opts = {
@@ -13,7 +15,7 @@ if (!process.env.GOOGLE_KEY) {
     onMessage: function (bot, user, userID, channelID, message, rawEvent) {
       var term = message.split(' ').splice(1).join()
       search(term, opts, function (err, results) {
-        if (err) return console.log(err)
+        if (err) return LOG.error(err)
         var vid = results[Math.floor(Math.random() * results.length)].link
         bot.sendMessage({
           to: channelID,
