@@ -8,6 +8,7 @@ const schedule = require('node-schedule')
 import Random from 'random-js'
 const random = new Random(Random.engines.mt19937().autoSeed())
 const fs = require('fs')
+import { LOG } from './logger.js'
 
 let announceGuard = 0
 let configBlock = {}
@@ -23,7 +24,7 @@ if (fs.existsSync('.config')) {
   configBlock.DISCORD_EMAIL = process.env.DISCORD_EMAIL
   configBlock.DISCORD_PASSWORD = process.env.DISCORD_PASSWORD
   if (!process.env.DISCORD_EMAIL || !process.env.DISCORD_PASSWORD) {
-    console.log(`Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables`)
+    LOG.error('Please define DISCORD_EMAIL and DISCORD_PASSWORD environment variables')
     process.exit(1)
   }
 }
@@ -38,9 +39,9 @@ Object.keys(configBlock).forEach(function (key) {
   process.env[key] = configBlock[key]
 })
 
-if (!process.env.DISCORD_GUILD) console.warn(`Warning: DISCORD_GUILD unset - joining first guild`)
-if (!process.env.DISCORD_VOICE_CHANNEL) console.warn(`Warning: DISCORD_VOICE_CHANNEL unset - joining 'General'`)
-if (!process.env.DISCORD_TEXT_CHANNEL) console.warn(`Warning: DISCORD_TEXT_CHANNEL unset - joining 'general'`)
+if (!process.env.DISCORD_GUILD) LOG.warn('DISCORD_GUILD unset - joining first guild')
+if (!process.env.DISCORD_VOICE_CHANNEL) LOG.warn('DISCORD_VOICE_CHANNEL unset - joining "General"')
+if (!process.env.DISCORD_TEXT_CHANNEL) LOG.warn('DISCORD_TEXT_CHANNEL unset - joining "general"')
 
 bot.BOT_NAME = process.env.BOT_NAME
 // This is the default text channel that
@@ -64,14 +65,14 @@ const initialize = function () {
       try {
         const module = require('./' + files[i].replace('_build/', ''))
         if (!module.names) {
-          console.log(`Warning! ${files[i]} ignored as it has no .names propery`)
+          LOG.warn(`${files[i]} ignored as it has no .names propery`)
           continue
         }
         modules[module.names[0]] = module
         if (!module.help_text) module.help_text = 'Not documented'
         help_text.push([module.names[0], module.help_text])
       } catch (e) {
-        console.log(`Failed to load ${module}:`, e.message)
+        LOG.error(`Failed to load ${module}:`, e.message)
       }
     }
     sifter = new Sifter(modules)
@@ -90,10 +91,10 @@ const setupBot = function () {
     })
     if (bot.my_guild.length > 0) bot.my_guild = bot.my_guild[0]
     else {
-      console.log(`I was unable to join ${bot.DISCORD_GUILD}, falling back to first`)
+      LOG.warn(`I was unable to join ${bot.DISCORD_GUILD}, falling back to first`)
       bot.my_guild = data.d.guilds[0]
     }
-    console.log(`Connected as "${hailing_frequency}" to "${bot.my_guild.name}"`)
+    LOG.debug(`Connected as "${hailing_frequency}" to "${bot.my_guild.name}"`)
     for (const i in bot.my_guild.channels) {
       const chan = bot.my_guild.channels[i]
       if (chan.name === 'general' && chan.type === 'text') bot.my_general_channel = chan
@@ -101,6 +102,17 @@ const setupBot = function () {
       else if (chan.name === bot.DISCORD_VOICE_CHANNEL && chan.type === 'voice') bot.my_voice_channel = chan
     }
     onReady()
+  })
+  bot.on('disconnected', function () {
+    if (process.env.NODE_ENV !== 'dev') {
+      LOG.info('Disconnected from Discord! Reconnecting in 5 seconds.')
+      const reconnecter = setInterval(function () {
+        bot.connect()
+        if (bot.connected) {
+          clearInterval(reconnecter)
+        }
+      }, 5000)
+    }
   })
 }
 
@@ -142,9 +154,7 @@ const onReady = function () {
 }
 
 const onMessage = function (user, userID, channelID, message, rawEvent) {
-// To get it working, Needs to be solved
-
-  if (message.indexOf('!bots?') > -1) {
+  if (message.indexOf('!bots?') > -1 && message.indexOf('Force all bots to identify themselves') === -1) {
     return bot.sendMessage({
       to: channelID,
       message: 'Hello I am a robot and my name is ' + bot.BOT_NAME
@@ -180,9 +190,16 @@ const onMessage = function (user, userID, channelID, message, rawEvent) {
   })
   if (results.total > 0) {
     const module = modules[results.items[0].id]
-    console.log(`${user} called ${module.names} with "${trimmed}" by a score of ${results.items[0].score}`)
+    LOG.debug(`${user} called ${module.names} with "${trimmed}" by a score of ${results.items[0].score}`)
     if (module.onMessage) module.onMessage(bot, user, userID, channelID, trimmed, rawEvent, dependencies)
   }
 }
 
 initialize()
+
+// Log a message before exiting, for debugging purposes
+process.stdin.resume()
+process.on('exit', function () {
+  LOG.info('Exiting!')
+  process.exit()
+})

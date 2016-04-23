@@ -1,7 +1,10 @@
 'use strict'
+
 import Flipper from 'imgflipper'
+import { LOG } from './../logger.js'
+
 if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
-  console.log('Missing one or more imgflip credentials, this module will not be loaded.')
+  LOG.info('Missing one or more imgflip credentials, the meme module will not be loaded.')
 } else {
   const imgFlip = new Flipper(process.env.IMGFLIP_USER, process.env.IMGFLIP_PASSWORD)
   module.exports = {
@@ -71,7 +74,7 @@ if (!process.env.IMGFLIP_USER || !process.env.IMGFLIP_PASSWORD) {
         memeBottomText,
         (err, image) => {
           if (err) {
-            console.log(err)
+            LOG.error(err)
             return
           }
           bot.sendMessage({
